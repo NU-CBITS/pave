@@ -1,0 +1,10 @@
+<div ng-show="userExists()">
+	<div class="jumbotron">
+		<h1>Welcome to PAVE {{appVersion}}</h1>
+	  <a ng-repeat="item in navItems" class="btn {{item.class}}" ng-href="#{{item.href}}">{{item.html}}</a>
+	</div>
+</div>
+
+<div ng-hide="userExists()">
+	<div ng-include="'views/login.html'"></div>
+</div>

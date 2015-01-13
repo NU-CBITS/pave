@@ -1,0 +1,9 @@
+<div class="header" ng-controller="NavbarCtrl">
+  <ul class="nav nav-pills pull-right" ng-show="userExists()">
+  	<li><a ng-href="#/">Home</a></li>
+    <li ng-repeat="item in navItems" class="{{item.class}}"><a ng-href="#{{item.href}}">{{item.html}}</a></li>
+    <li ng-repeat="item in settingItems" class="{{item.class}}"><a ng-href="#{{item.href}}">{{item.html}}</a></li>
+    <li><a ng-click="logout()">Logout</a></li>
+  </ul>
+  <h3 class="text-muted">{{siteName}}</h3>
+</div>
