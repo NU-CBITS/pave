@@ -1,12 +1,50 @@
 <div class="row">
 
-	<div ng-include="views/subnav.html" class="col-md-3"></div>
+	<div ng-include="'views/subnav.html'" class="col-md-3"></div>
 
 	<div class="col-md-9">
-		<table>
-			<tr><th>User</th></tr>
-			<tr ng-repeat="user in users"><td></td><td></td></tr>
-		</table>
+
+
+	<div ng-switch on="userType">
+      <div ng-switch-when="subjects">
+      <h2>Subjects</h2>
+      <table class="table table-rounded table-striped">
+					<tr><th>User</th><th>Email</th><th>Actions</th></tr>
+					<tr ng-repeat="user in subjects">
+					<td>{{user.name}}</td>
+					<td>{{user.email}}</td>
+					<td><a ng-href="#/history/{{user.id}}" class="btn btn-info">Review Encounters</a> <a ng-href="#/users/subjects/edit/{{user.id}}" class="btn btn-info">Edit Info</a></td>
+				</tr>
+			</table>
+      </div>
+      <div ng-switch-when="providers">
+      <h2>Providers</h2>
+			<table class="table table-rounded table-striped">
+					<tr><th>User</th><th>Email</th><th>Is Admin?</th><th>Patients Managed</th></tr>
+					<tr ng-repeat="user in providers">
+					<td>{{user.name}}</td>
+					<td>{{user.email}}</td>
+					<td><i ng-show="{{user.isAdmin}}" class="glyphicon glyphicon-check"></i></td>
+					<td></td>
+				</tr>
+			</table>
+      </div>
+      <div ng-switch-default>
+      <h2>Administrators</h2>
+			<table class="table table-rounded table-striped">
+					<tr><th>User</th><th>Email</th><th>Manages Patients</th></tr>
+					<tr ng-repeat="user in providers | filter: 'isAdmin== true'">
+					<td>{{user.name}}</td>
+					<td>{{user.email}}</td>
+					<td><i ng-show="{{user.managesPatients}}.length > 0" class="glyphicon glyphicon-check"></i></td>
+
+				</tr>
+				</table>
+      </div>
+  </div>
+
+
+
 	</div>
 
 </div>

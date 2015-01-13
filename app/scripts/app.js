@@ -25,6 +25,13 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/record', {
+        templateUrl: 'views/record.html',
+        controller: 'RecordCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
@@ -49,23 +56,28 @@ angular
         templateUrl: 'views/history.html',
         controller: 'HistoryCtrl'
       })
-      .when('/history/:userId', {
+      .when('/history/:type', {
         templateUrl: 'views/history.html',
         controller: 'HistoryCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
-      });
+      .when('/history/:type/:userId', {
+        templateUrl: 'views/history.html',
+        controller: 'HistoryCtrl'
+      })
+      
   }).run(function($rootScope,$cookies) {
 
     $rootScope.footer = 'Powered by CBITs';
     $rootScope.siteName = 'PAVE';
-    $rootScope.appVersion = '0.0.2';
+    $rootScope.appVersion = '0.1.2';
+
+    $rootScope.currentUser = {name:'Lisa', upcomingSessions:[1,2]};
+
 
     $rootScope.navItems = [
-      {html:'Users',href:'/users',class:''},
-      {html:'Sessions',href:'/sessions',class:''},
-      {html:'History',href:'/history',class:''}
+      {html:'Users',href:'#/users',class:'btn-info'},
+      {html:'Sessions',href:'/sessions',class:'btn-success'},
+      {html:'Encounters',href:'#/history',class:'btn-warning'},
     ];
     
     $rootScope.settingsItems = [

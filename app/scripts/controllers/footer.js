@@ -10,4 +10,5 @@
 angular.module('paveApp')
   .controller('FooterCtrl', function ($scope,$rootScope) {
     $scope.footer = $rootScope.footer;
+    $scope.appVersion = $rootScope.appVersion;
   });
