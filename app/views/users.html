@@ -4,46 +4,28 @@
 
 	<div class="col-md-9">
 
-
-	<div ng-switch on="userType">
-      <div ng-switch-when="subjects">
-      <h2>Clients</h2>
-      <table class="table table-rounded table-striped">
-					<tr><th>User</th><th>Email</th><th>Actions</th></tr>
-					<tr ng-repeat="user in subjects">
-					<td>{{user.name}}</td>
-					<td>{{user.email}}</td>
-					<td><a ng-href="#/history/{{user.id}}" class="btn btn-info">Session History</a> <a ng-href="#/session/{{user.id}}" class="btn btn-info">Video</a> <a ng-href="#/users/subjects/edit/{{user.id}}" class="btn btn-info">Edit Info</a></td>
-				</tr>
+		  <table class="table table-rounded table-striped">
+					<tr>
+						<th>User</th>
+						<th>Email</th>
+						<th>Is Admin?</th>
+						<th>Is Provider?</th>
+						<th>Is Client?</th>
+						<th>Actions</th>
+					</tr>
+					<tr ng-repeat="user in users">
+						<td>{{user.name}}</td>
+						<td>{{user.email}}</td>
+						<td>{{user.isAdmin}}</td>
+						<td>{{user.isProvider}}</td>
+						<td>{{user.isClient}}</td>
+						<td>
+							<a ng-href="#/history/{{user.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-eye-open"></i></a> 
+							<a ng-href="#/session/{{user.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-facetime-video"></i></a>
+							<a ng-href="#/users/edit/{{user.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
+						</td>
+					</tr>
 			</table>
-      </div>
-      <div ng-switch-when="providers">
-      <h2>Providers</h2>
-			<table class="table table-rounded table-striped">
-					<tr><th>User</th><th>Email</th><th>Is Admin?</th><th>Patients Managed</th></tr>
-					<tr ng-repeat="user in providers">
-					<td>{{user.name}}</td>
-					<td>{{user.email}}</td>
-					<td><i ng-show="{{user.isAdmin}}" class="glyphicon glyphicon-check"></i></td>
-					<td></td>
-				</tr>
-			</table>
-      </div>
-      <div ng-switch-default>
-      <h2>Administrators</h2>
-			<table class="table table-rounded table-striped">
-					<tr><th>User</th><th>Email</th><th>Manages Patients</th></tr>
-					<tr ng-repeat="user in providers | filter: 'isAdmin== true'">
-					<td>{{user.name}}</td>
-					<td>{{user.email}}</td>
-					<td><i ng-show="{{user.managesPatients}}.length > 0" class="glyphicon glyphicon-check"></i></td>
-
-				</tr>
-				</table>
-      </div>
-  </div>
-
-
 
 	</div>
 

@@ -74,18 +74,18 @@ angular
 
     $rootScope.footer = 'Powered by CBITs';
     $rootScope.siteName = 'PAVE';
-    $rootScope.appVersion = '0.1.2';
+    $rootScope.appVersion = '0.1.3';
     $rootScope.dataIO = 'https://pave.firebaseapp.com';
 
     $rootScope.navItems = [
-      {html:'Users',href:'#/users',class:'btn-info'},
-      {html:'Videos',href:'#/sessions',class:'btn-success'},
-      {html:'Encounters',href:'#/history',class:'btn-warning'},
+      {html:'Users',href:'#/users',class:'btn-info', icon:'user'},
+      {html:'Videos',href:'#/sessions',class:'btn-success', icon:'facetime-video'},
+      {html:'Encounters',href:'#/history',class:'btn-warning', icon:'eye-open'}
     ];
     
     $rootScope.settingsItems = [
       {html:'Settings', href:'/users',class:'btn-default'}
-    ];
+    ];  
 
     $rootScope.userLoggedIn = function(){ 
 

@@ -1,4 +1,4 @@
-<div ng-show="userExists()">
+<div ng-show="userLoggedIn()">
 	<div class="jumbotron">
 		<h1>Welcome back, {{currentUser.name}}!</h1>
 		<p>You have 2 scheduled upcoming sessions!</p>
@@ -6,6 +6,6 @@
 	</div>
 </div>
 
-<div ng-hide="userExists()">
+<div ng-hide="userLoggedIn()">
 	<div ng-include="'views/login.html'"></div>
 </div>

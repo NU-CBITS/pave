@@ -13,6 +13,6 @@ angular.module('paveApp')
   	$scope.appVersion = $rootScope.appVersion;
   	$scope.mainNavItems = $rootScope.mainNavItems;
   	$scope.currentUser = $rootScope.currentUser;
-  	$scope.userExists = $rootScope.userExists;
+  	$scope.userLoggedIn = $rootScope.userLoggedIn;
   	
   });

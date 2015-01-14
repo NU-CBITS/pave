@@ -8,14 +8,12 @@
  * Controller of the paveApp
  */
 angular.module('paveApp')
-  .controller('LoginCtrl', function ($scope,$rootScope,$location,$cookies) {
+  .controller('LoginCtrl', function ($scope,$rootScope,$cookies) {
     
   	$scope.submit = function(){
 
-  		$cookies.userExists = true;
-  		$rootScope.userExists = $cookies.userExists;
-
-  		// $location.href = "#/";
+  		$cookies.userLoggedIn = true;
+  		$scope.userLoggedIn = $rootScope.userLoggedIn;
 
   	}
 
