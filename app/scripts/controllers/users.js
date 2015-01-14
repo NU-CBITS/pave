@@ -8,7 +8,7 @@
  * Controller of the paveApp
  */
 angular.module('paveApp')
-  .controller('UsersCtrl', function ($scope, $routeParams, $filter, users ) {
+  .controller('UsersCtrl', function ($scope, $routeParams, $filter, users) {
 
     $scope.subNavExists = true;
 

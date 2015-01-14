@@ -74,8 +74,8 @@ angular
 
     $rootScope.footer = 'Powered by CBITs';
     $rootScope.siteName = 'PAVE';
-    $rootScope.appVersion = '0.1.3';
-    $rootScope.dataIO = 'https://pave.firebaseapp.com';
+    $rootScope.appVersion = '0.1.4';
+    $rootScope.dataIO = 'https://pave.firebaseio.com';
 
     $rootScope.navItems = [
       {html:'Users',href:'#/users',class:'btn-info', icon:'user'},
@@ -84,7 +84,7 @@ angular
     ];
     
     $rootScope.settingsItems = [
-      {html:'Settings', href:'/users',class:'btn-default'}
+      {html:'Settings', href:'#/users',class:'btn-default'}
     ];  
 
     $rootScope.userLoggedIn = function(){ 
@@ -95,5 +95,7 @@ angular
         { return false }
 
     };
+
+    $rootScope.secret
 
 });

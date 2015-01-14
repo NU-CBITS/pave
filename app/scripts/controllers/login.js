@@ -8,7 +8,7 @@
  * Controller of the paveApp
  */
 angular.module('paveApp')
-  .controller('LoginCtrl', function ($scope,$rootScope,$cookies) {
+  .controller('LoginCtrl', function ($scope,$rootScope,$cookies,login) {
     
   	$scope.submit = function(){
 

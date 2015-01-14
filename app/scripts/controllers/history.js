@@ -45,6 +45,16 @@ angular.module('paveApp')
     	movedToHistory:false}
     ]
 
+    $scope.encounterTasks = [
+    {order:1, label:'Pre Visit Coaching', name:'preVisit'},
+    {order:2, label:'Visitation', name:'visitation'},
+    {order:3, label:'PDR Call', name:'pdr'},
+    {order:4, label:'Session Calls', name:'session'},
+    {order:5, label:'Intermediary Contacts', name:'intermediary'},
+    {order:6, label:'Fidelity Ratings', name:'fidelity'},
+    ];
+
+
     $scope.addEncounter = function(){
 
     	var recordToAdd = {
