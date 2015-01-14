@@ -4,7 +4,7 @@
  -->
  		<li ng-repeat="item in navItems" class="{{item.class}}"><a ng-href="#{{item.href}}">{{item.html}}</a></li>
     <li ng-repeat="item in settingsItems" class="{{item.class}}"><a ng-href="#{{item.href}}">{{item.html}}</a></li>
-    <li><a ng-click="logout()">Logout</a></li>
+    <li><a ng-click="logout()" class="btn-default">Logout</a></li>
   </ul>
   <h3 class="text-muted"><a ng-href="#/">{{siteName}}</a></h3>
 </div>

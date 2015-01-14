@@ -8,7 +8,8 @@
  * Controller of the paveApp
  */
 angular.module('paveApp')
-  .controller('UsersCtrl', function ($scope, $routeParams, $filter) {
+  .controller('UsersCtrl', function ($scope, $routeParams, $filter, users ) {
+
     $scope.subNavExists = true;
 
     $scope.subNavItems = [
@@ -18,8 +19,6 @@ angular.module('paveApp')
     ];
 
     $scope.userType = $routeParams.userType || 'administrators';
-
-
 
     $scope.providers = [
 

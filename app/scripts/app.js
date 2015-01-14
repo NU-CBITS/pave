@@ -79,7 +79,7 @@ angular
 
     $rootScope.navItems = [
       {html:'Users',href:'#/users',class:'btn-info'},
-      {html:'Videos',href:'/sessions',class:'btn-success'},
+      {html:'Videos',href:'#/sessions',class:'btn-success'},
       {html:'Encounters',href:'#/history',class:'btn-warning'},
     ];
     
@@ -87,9 +87,9 @@ angular
       {html:'Settings', href:'/users',class:'btn-default'}
     ];
 
-    $rootScope.userExists = function(){ 
+    $rootScope.userLoggedIn = function(){ 
 
-      if ($cookies.userExists == 'true')
+      if ($cookies.userLoggedIn == 'true')
         { return true }
       else 
         { return false }
