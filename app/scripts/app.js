@@ -48,6 +48,10 @@ angular
         templateUrl: 'views/sessions.html',
         controller: 'SessionsCtrl'
       })
+      .when('/sessions/:type', {
+        templateUrl: 'views/sessions.html',
+        controller: 'SessionsCtrl'
+      })
       .when('/settings', {
         templateUrl: 'views/settings.html',
         controller: 'SettingsCtrl'
