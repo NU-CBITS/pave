@@ -57,18 +57,21 @@
                     Your browser does not support the video tag.
             </video>
             <h3>Tag this timepoint:</h3>
+            <label class="label label-info">Remember: Tag a few seconds before the timepoint!</label>
             <div class="well">
             <select name="timepoint_label" class="form-control">
             <option>--</option>
             </select>
             <textarea name="timepoint_notes" class="form-control" placeholder="Add any notes"></textarea>
-            <button type="submit">Save this tag</button>
+            <button type="submit" class="btn btn-info">Save this tag</button>
             </div>
       </div>
       <div class="col-md-7">
       <button type="submit" class="disabled btn">cannot sync because
-      <b>Brigitta</b> is <label class="label label-warning">not logged in</label></button>
-      <br/><br/>
+      <b>Brigitta</b> is <label class="label label-warning">not logged in</label></button><br/><br/>
+  <!--     <button type="submit" class="btn btn-info">sync now
+      <b>Brigitta</b> is <label class="label label-success">logged in</label></button>
+      <br/><br/> -->
 
       <table class="table table-rounded table-striped">
       <tr><th>Timestamp</th><th>Label</th><th>Notes</th><th></th></tr>

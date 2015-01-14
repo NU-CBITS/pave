@@ -14,7 +14,7 @@ angular.module('paveApp')
     $scope.subNavItems = [
 	    {html:'Administrators',href:'#/users/administrators',class:''},
 	    {html:'Providers',href:'#/users/providers',class:''},
-	    {html:'Subjects',href:'#/users/subjects',class:''},
+	    {html:'Clients',href:'#/users/subjects',class:''},
     ];
 
     $scope.userType = $routeParams.userType || 'administrators';
@@ -23,7 +23,7 @@ angular.module('paveApp')
 
     $scope.providers = [
 
-   		{id:1,name:'Lisa Saldana',email:"lisa@oslc.org",isAdmin:true,managesPatients:[5,6]},
+   		{id:1,name:'Lisa Saldana',email:"lisa@oslc.org",isAdmin:true,managesPatients:[5,6],isClient:false},
 			{id:2,name:'Mark Begale',email:"m.begale@gmail.com",isAdmin:true,managesPatients:[3,4]},
 			{id:4,name:'Baroness Schrader',email:"baroness@schrader.com",isAdmin:true,managesPatients:[]},
       {id:5,name:'Maria Von Trapp',email:"maria@vontrapp.org",isAdmin:false,managesPatients:[1,2]},

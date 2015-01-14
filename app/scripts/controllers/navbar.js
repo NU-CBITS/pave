@@ -19,9 +19,8 @@ angular.module('paveApp')
     $scope.userExists = $rootScope.userExists;
 
     $scope.logout = function(){
-    	$rootScope.userExists = 'false';
     	$cookieStore.remove('userExists');
-    	window.location.href = "/";
+    	$location.href = "#/";
     }
 
     // $scope.active = function(linkName){

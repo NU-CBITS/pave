@@ -29,7 +29,7 @@ angular.module('paveApp')
     ];
 
     $scope.encounters = [{
-    	subject:1,
+    	subject:'Louisa',
     	preVisitDate:"1/15/15",
     	preVisitIsCompleted:false,
     	visitDate:"",

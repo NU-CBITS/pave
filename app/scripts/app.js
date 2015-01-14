@@ -17,7 +17,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -74,18 +75,16 @@ angular
     $rootScope.footer = 'Powered by CBITs';
     $rootScope.siteName = 'PAVE';
     $rootScope.appVersion = '0.1.2';
-
-    $rootScope.currentUser = {name:'Lisa', upcomingSessions:[1,2]};
-
+    $rootScope.dataIO = 'https://pave.firebaseapp.com';
 
     $rootScope.navItems = [
       {html:'Users',href:'#/users',class:'btn-info'},
-      {html:'Sessions',href:'/sessions',class:'btn-success'},
+      {html:'Videos',href:'/sessions',class:'btn-success'},
       {html:'Encounters',href:'#/history',class:'btn-warning'},
     ];
     
     $rootScope.settingsItems = [
-      {html:'Settings', href:'/users',class:''}
+      {html:'Settings', href:'/users',class:'btn-default'}
     ];
 
     $rootScope.userExists = function(){ 

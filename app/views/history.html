@@ -9,14 +9,14 @@
       <div ng-switch-when="history">
       <h2>History</h2>
 
-  		<i>No encounters have been moved to history.</i>
+  		<i>No sessions have been moved to history.</i>
       
       </div>
       <div ng-switch-when="add">
       <h2>Add a new encounter</h2>
       <form ng-submit="addEncounter()">
 			  <div class="form-group">
-			    <label for="subject">Subject name:</label>
+			    <label for="subject">Client name:</label>
 			    <select ng-model="subject" required>
   		<option ng-repeat="subject in subjects" value="{{subject.id}}">{{subject.name}}</option>
 			    </select>

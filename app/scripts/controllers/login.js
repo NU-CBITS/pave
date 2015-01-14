@@ -15,7 +15,7 @@ angular.module('paveApp')
   		$cookies.userExists = true;
   		$rootScope.userExists = $cookies.userExists;
 
-  		window.location.href = "/";
+  		// $location.href = "#/";
 
   	}
 

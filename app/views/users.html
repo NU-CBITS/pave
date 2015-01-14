@@ -7,13 +7,13 @@
 
 	<div ng-switch on="userType">
       <div ng-switch-when="subjects">
-      <h2>Subjects</h2>
+      <h2>Clients</h2>
       <table class="table table-rounded table-striped">
 					<tr><th>User</th><th>Email</th><th>Actions</th></tr>
 					<tr ng-repeat="user in subjects">
 					<td>{{user.name}}</td>
 					<td>{{user.email}}</td>
-					<td><a ng-href="#/history/{{user.id}}" class="btn btn-info">Review Encounters</a> <a ng-href="#/users/subjects/edit/{{user.id}}" class="btn btn-info">Edit Info</a></td>
+					<td><a ng-href="#/history/{{user.id}}" class="btn btn-info">Session History</a> <a ng-href="#/session/{{user.id}}" class="btn btn-info">Video</a> <a ng-href="#/users/subjects/edit/{{user.id}}" class="btn btn-info">Edit Info</a></td>
 				</tr>
 			</table>
       </div>
