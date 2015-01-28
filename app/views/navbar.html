@@ -7,13 +7,13 @@
  		<li ng-repeat="item in navItems" class="{{item.class}}"><a ng-href="{{item.href}}">{{item.html}} <i class="glyphicon glyphicon-{{item.icon}}"></i></a></li>
   
   </ul>
-  <p class="navbar-text navbar-right" ng-show="userLoggedIn()">
-  	Signed in as 
-  	<a href="/" class="navbar-link">{{currentUser.name}}</a>
-  	<ul>
-  		<li ng-repeat="item in settingsItems" class="{{item.class}}"><a ng-href="{{item.href}}">{{item.html}} <i class="glyphicon glyphicon-{{item.icon}}"></i></a></li>
-    <li><a ng-click="logout()" class="btn-default">Logout</a></li>
-  </ul>
+  <p class="navbar-text navbar-rightpull-left pull-right" ng-show="userLoggedIn()">
+  	Signed in as <a ng-click="logout()" class="btn-default">Logout</a>
+  	<a href="/" class="navbar-link">{{currentUser.name}}<!--  <ul>
+      <li ng-repeat="item in settingsItems" class="{{item.class}}"><a ng-href="{{item.href}}">{{item.html}} <i class="glyphicon glyphicon-{{item.icon}}"></i></a></li>
+    <li></li>
+  </ul> --></a>
+  
   </p>
 	<h3 class="text-muted"><a ng-href="#/">{{siteName}}</a></h3>
 

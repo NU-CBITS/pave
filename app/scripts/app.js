@@ -30,6 +30,14 @@ angular
         templateUrl: 'views/record.html',
         controller: 'RecordCtrl'
       })
+      .when('/fidelityQuestionnaire', {
+        templateUrl: 'views/fidelityquestionnaire.html',
+        controller: 'FidelityquestionnaireCtrl'
+      })
+      .when('/pdr', {
+        templateUrl: 'views/pdr.html',
+        controller: 'PdrCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       })
