@@ -17,16 +17,21 @@ angular.module('paveApp')
 	    {html:'History',href:'#/history/history',class:''},
     ];
 
-    $scope.type = $routeParams.type;
+    $scope.type             = $routeParams.type;
+    $scope.userId           = $routeParams.userId;
+    $scope.date             = { date: null };
+    $scope.encounters       = Encounters.contents;
+    $scope.encounterTasks   = Encounters.tasks;
 
-    $scope.clients = Users.clients;
+    if($scope.userId == undefined){
+        $scope.clients  = Users.clients;
+        $scope.client   = { client: {} };
+    } else {
+        $scope.clients  = [Users.get($scope.userId)];
+        $scope.client   = {client:Users.get($scope.userId)};
+    }
 
-    $scope.client = { client: {} };
-    $scope.date = { date: null };
 
-    $scope.encounters = Encounters.contents;
-
-    $scope.encounterTasks = Encounters.tasks;
 
     $scope.addEncounter = function(){
 

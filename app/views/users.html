@@ -3,29 +3,34 @@
 	<div ng-include="'views/subnav.html'" class="col-md-3"></div>
 
 	<div class="col-md-9">
+	<h2>{{pageTitle}}</h2>	
 
+	<a ng-href="#/user" class="btn btn-success">Add User <i class="glyphicon glyphicon-plus"></i></a><br/><br/>
 		  <table class="table table-rounded table-striped">
 					<tr>
 						<th>User</th>
 						<th>Email</th>
-						<th>Is Admin?</th>
-						<th>Is Provider?</th>
-						<th>Is Client?</th>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th ng-show="userType != 'clients'">Is Admin?</th>
+						<th ng-show="userType != 'clients'">Is Provider?</th>
 						<th>Actions</th>
 					</tr>
 					<tr ng-repeat="user in users">
-						<td>{{user.name}}</td>
+						<td>{{user.username}}</td>
 						<td>{{user.email}}</td>
-						<td>{{user.isAdmin}}</td>
-						<td>{{user.isProvider}}</td>
-						<td>{{user.isClient}}</td>
+						<td>{{user.firstName}}</td>
+						<td>{{user.lastName}}</td>
+						<td ng-show="userType != 'clients'" ng-bind-html="booleanFormatter(user.isAdmin)"></td>
+						<td ng-show="userType != 'clients'" ng-bind-html="booleanFormatter(user.isProvider)"></td>
 						<td>
 							<a ng-href="#/history/{{user.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-eye-open"></i></a> 
 							<a ng-href="#/session/{{user.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-facetime-video"></i></a>
-							<a ng-href="#/users/edit/{{user.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
+							<a ng-href="#/user/{{user.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-edit"></i></a>
 						</td>
 					</tr>
 			</table>
+
 
 	</div>
 

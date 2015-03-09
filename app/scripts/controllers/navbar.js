@@ -20,7 +20,7 @@ angular.module('paveApp')
 
     $scope.logout = function(){
     	$cookieStore.remove('userLoggedIn');
-    	$location.href = "#/";
+    	$location.href = "/";
     }
 
     // $scope.active = function(linkName){

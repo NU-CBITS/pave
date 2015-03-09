@@ -12,26 +12,53 @@ angular.module('paveApp')
 
   var service = {};
 
+  var getIndexOf = function (arr, val, prop) {
+      var l = arr.length,
+        k = 0;
+      for (k = 0; k < l; k = k + 1) {
+        if (arr[k][prop] === val) {
+          return k;
+        }
+      }
+      return 'false';
+    }
+
   service.users = [
-  	{id:1,name:'Lisa Saldana',email:"lisa@oslc.org",isAdmin:true,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
-		{id:2,name:'Mark Begale',email:"m.begale@gmail.com",isAdmin:true,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
-		{id:4,name:'Baroness Schrader',email:"baroness@schrader.com",isAdmin:true,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
-    {id:5,name:'Maria Von Trapp',email:"maria@vontrapp.org",isAdmin:false,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
-  	{id:6,name:'Colonel Von Trapp',email:"plummer@vontrapp.org",isAdmin:true,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
-    {id:7,name:'Louisa',email:"louisa@vontrapp.org",isAdmin:true,isProvider:false,isClient:false,createdAt:'',lastLogin:''},
-    {id:8,name:'Brigitta',email:"brigitta@vontrapp.org",isAdmin:true,isProvider:false,isClient:true,createdAt:'',lastLogin:''},
-    {id:9,name:'Liesl',email:"Liesl@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,createdAt:'',lastLogin:''},
-    {id:10,name:'Kurt',email:"kurt@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,createdAt:'',lastLogin:''},
-    {id:11,name:'Marta',email:"marta@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,createdAt:'',lastLogin:''},
-    {id:12,name:'Friedrich',email:"frierich@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,createdAt:'',lastLogin:''}
+  	{id:'1',username:'Lisa',firstName:'Lisa',lastName:'Saldana',email:"lisa@oslc.org",isAdmin:true,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
+		{id:'2',username:'Mark',email:"m.begale@gmail.com",isAdmin:true,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
+		{id:'3',username:'Baroness Schrader',email:"baroness@schrader.com",isAdmin:true,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
+    {id:'4',username:'Maria Von Trapp',email:"maria@vontrapp.org",isAdmin:false,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
+  	{id:'5',username:'Colonel Von Trapp',email:"plummer@vontrapp.org",isAdmin:true,isProvider:true,isClient:false,createdAt:'',lastLogin:''},
+    {id:'6',username:'Louisa',email:"louisa@vontrapp.org",isAdmin:true,isProvider:false,isClient:false,createdAt:'',lastLogin:''},
+    {id:'8',username:'Liesl',email:"Liesl@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,createdAt:'',lastLogin:''},
+    {id:'9',username:'Kurt',email:"kurt@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,createdAt:'',lastLogin:''},
+    {id:'10',username:'Marta',email:"marta@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,createdAt:'',lastLogin:''},
+    {id:'11',username:'Friedrich',email:"frierich@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,createdAt:'',lastLogin:''}
   ];
 
   service.administrators = $filter('filter')(service.users, {isAdmin:true},true);
   service.providers = $filter('filter')(service.users, {isProvider:true},true);
   service.clients = $filter('filter')(service.users, {isClient:true},true);
 
-  service.add = function(object){
-  	service.users.push(object);
+  service.upsert = function(object){
+
+    var arrayIndex = getIndexOf(service.users,object.id,'id');
+
+    if (arrayIndex != 'false'){
+      //update
+      for (var attrname in object) { 
+        service.users[arrayIndex][attrname] = object[attrname]; 
+      }
+    }
+    else {
+      //insert
+      service.users.push(object);
+    }
+    debugger;
+  }
+
+  service.get = function(id){
+    return $filter('filter')(service.users,{id:id},true)[0]
   }
 
   return service

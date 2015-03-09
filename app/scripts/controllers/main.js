@@ -8,11 +8,11 @@
  * Controller of the paveApp
  */
 angular.module('paveApp')
-  .controller('MainCtrl', function ($scope, $rootScope) {
+  .controller('MainCtrl', function ($scope, $rootScope, Users) {
 
-  	$scope.appVersion = $rootScope.appVersion;
+  	$scope.appVersion 	= $rootScope.appVersion;
   	$scope.mainNavItems = $rootScope.mainNavItems;
-  	$scope.currentUser = $rootScope.currentUser;
+  	$scope.currentUser 	= $rootScope.currentUser;
   	$scope.userLoggedIn = $rootScope.userLoggedIn;
   	
   });

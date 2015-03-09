@@ -7,14 +7,14 @@
 	<div ng-switch on="type">
       <div ng-switch-when="history">
             <h2>History</h2>
-        		<i>No sessions have been moved to history.</i>
+        	<i>No sessions have been moved to history.</i>
       </div>
       <div ng-switch-when="add">
       <h2>Add a new encounter:</h2>
       <form ng-submit="addEncounter()">
 	  <div class="form-group">
 	    <label for="client">Client name:</label>
-	    <select ng-model="client.client" ng-options="item.name for item in clients track by item.id">
+	    <select ng-model="client.client" ng-options="item.username for item in clients track by item.id">
 	    </select>
 	  </div>
 	  <div class="form-group">

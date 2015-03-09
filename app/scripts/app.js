@@ -18,7 +18,8 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'firebase'
+    'firebase',
+    'uuid'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -37,6 +38,14 @@ angular
       .when('/pdr', {
         templateUrl: 'views/pdr.html',
         controller: 'PdrCtrl'
+      })
+      .when('/user', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
+      })
+      .when('/user/:userId', {
+        templateUrl: 'views/user.html',
+        controller: 'UserCtrl'
       })
       .otherwise({
         redirectTo: '/'
@@ -80,20 +89,22 @@ angular
       
   }).run(function($rootScope,$cookies) {
 
-    $rootScope.footer = 'Powered by CBITs';
-    $rootScope.siteName = 'PAVE';
+    $rootScope.footer     = 'Powered by CBITs';
+    $rootScope.siteName   = 'PAVE';
     $rootScope.appVersion = '0.1.4';
-    $rootScope.dataIO = 'https://pave.firebaseio.com';
+    $rootScope.dataIO     = 'https://pave.firebaseio.com';
 
     $rootScope.navItems = [
-      {html:'Users',href:'#/users',class:'btn-info', icon:'user'},
-      {html:'Videos',href:'#/sessions',class:'btn-success', icon:'facetime-video'},
+      {html:'Users',href:'#/users',class:'btn-warning', icon:'user'},
+      {html:'Videos',href:'#/sessions',class:'btn-warning', icon:'facetime-video'},
       {html:'Encounters',href:'#/history',class:'btn-warning', icon:'eye-open'}
     ];
     
     $rootScope.settingsItems = [
       {html:'Settings', href:'#/users',class:'btn-default'}
     ];  
+
+    $rootScope.currentUser = 1;
 
     $rootScope.userLoggedIn = function(){ 
 
@@ -103,7 +114,5 @@ angular
         { return false }
 
     };
-
-    $rootScope.secret
 
 });

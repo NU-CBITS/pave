@@ -1,0 +1,42 @@
+<h2>Add / Edit User</h2>
+
+<form>
+	<div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" ng-model="user.username" class="form-control" id="username" placeholder="Enter the name that the person will see when they log in">
+  </div>
+	<div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" ng-model="user.firstName" class="form-control" id="firstName" placeholder="Enter first name">
+  </div>
+ 	<div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" ng-model="user.lastName" class="form-control" id="lastName" placeholder="Enter first name">
+  </div> 
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" ng-model="user.email" class="form-control" id="email" placeholder="Enter email address" required>
+  </div>
+  <h4>User Role:</h4>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="user.isAdmin">Administrator
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="user.isProvider">Provider
+    </label>
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="user.isClient">Client
+    </label>
+  </div>
+  <button type="submit" ng-click="saveUser()" class="btn btn-primary">Save</button>  
+  <button type="submit" ng-show="user.isClient == true" ng-click="saveUserAndAddEncounter('/history/add' + user.id)" class="btn btn-info">Save and Add Encounter</button>
+  
+  <br/><br/>
+  <div class="alert alert-warning" ng-show="alertMessage != ''">{{alertMessage}}</div>
+
+</form>

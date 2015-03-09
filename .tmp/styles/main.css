@@ -82,6 +82,10 @@ body {
   color:white;
 }
 
+.left-margin20 {
+  margin-left:20px;
+}
+
 
 @import url("//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700");/*!
  * bootswatch v3.3.1+2

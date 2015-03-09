@@ -8,21 +8,33 @@
  * Controller of the paveApp
  */
 angular.module('paveApp')
-  .controller('UsersCtrl', function ($scope, $routeParams, $filter, Users) {
+  .controller('UsersCtrl', function ($scope, $routeParams, $filter, $sce, Users) {
 
     $scope.subNavExists = true;
 
     $scope.subNavItems = [
-	    {html:'Administrators',href:'#/users/administrators',class:''},
-	    {html:'Providers',href:'#/users/providers',class:''},
-	    {html:'Clients',href:'#/users/clients',class:''},
+	    {html:'Administrators',userType:'administrators',href:'#/users/administrators',class:''},
+	    {html:'Providers',userType:'providers',href:'#/users/providers',class:''},
+	    {html:'Clients',userType:'clients',href:'#/users/clients',class:''},
     ];
 
     $scope.userType = $routeParams.userType || 'administrators';
+    $scope.pageTitle = $filter('filter')($scope.subNavItems,{userType:$scope.userType},true)[0].html;
+    $scope.users = Users[$scope.userType];
 
-    $scope.users = Users.users;
+    $scope.booleanFormatter = function(boolean){
+     var trueView   = '<i class="glyphicon glyphicon-ok"></i>';
+     var falseView  = '';
+     var view       = '';
+
+     if (boolean == true){
+        view = trueView;
+     }
+     else {
+        view = falseView;
+     }
+
+     return $sce.trustAsHtml(view)
+    }
   
-
-
-
   });
