@@ -27,8 +27,8 @@ angular.module('paveApp')
 
       } else {
         Users.upsert($scope.user);
+        debugger;
         $location.url(nextPage);
-        $scope.$apply();
       }      
 
   	}

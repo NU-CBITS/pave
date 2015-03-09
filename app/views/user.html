@@ -34,7 +34,7 @@
     </label>
   </div>
   <button type="submit" ng-click="saveUser()" class="btn btn-primary">Save</button>  
-  <button type="submit" ng-show="user.isClient == true" ng-click="saveUserAndAddEncounter('/history/add' + user.id)" class="btn btn-info">Save and Add Encounter</button>
+  <button type="submit" ng-show="user.isClient == true" ng-click="saveUser('/history/add/' + user.id)" class="btn btn-info">Save and Add Encounter</button>
   
   <br/><br/>
   <div class="alert alert-warning" ng-show="alertMessage != ''">{{alertMessage}}</div>

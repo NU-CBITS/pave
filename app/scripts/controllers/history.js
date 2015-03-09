@@ -31,8 +31,6 @@ angular.module('paveApp')
         $scope.client   = {client:Users.get($scope.userId)};
     }
 
-
-
     $scope.addEncounter = function(){
 
     	var recordToAdd = {};

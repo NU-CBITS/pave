@@ -16,7 +16,7 @@
 						<th ng-show="userType != 'clients'">Is Provider?</th>
 						<th>Actions</th>
 					</tr>
-					<tr ng-repeat="user in users">
+					<tr ng-repeat="user in users()">
 						<td>{{user.username}}</td>
 						<td>{{user.email}}</td>
 						<td>{{user.firstName}}</td>

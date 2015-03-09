@@ -36,10 +36,6 @@ angular.module('paveApp')
     {id:'11',username:'Friedrich',email:"frierich@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,createdAt:'',lastLogin:''}
   ];
 
-  service.administrators = $filter('filter')(service.users, {isAdmin:true},true);
-  service.providers = $filter('filter')(service.users, {isProvider:true},true);
-  service.clients = $filter('filter')(service.users, {isClient:true},true);
-
   service.upsert = function(object){
 
     var arrayIndex = getIndexOf(service.users,object.id,'id');
