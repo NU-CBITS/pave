@@ -12,7 +12,7 @@ angular.module('paveApp')
 
   	$scope.appVersion 	= $rootScope.appVersion;
   	$scope.mainNavItems = $rootScope.mainNavItems;
-  	$scope.currentUser 	= $rootScope.currentUser;
+  	$scope.currentUser 	= Users.get($rootScope.currentUser);
   	$scope.userLoggedIn = $rootScope.userLoggedIn;
   	
   });

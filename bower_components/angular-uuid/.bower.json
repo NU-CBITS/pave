@@ -18,7 +18,6 @@
     "commit": "33d501b80d3de01710a100061d47632021108b8d"
   },
   "_source": "git://github.com/ajsd/angular-uuid.git",
-  "_target": "~0.1.0",
-  "_originalSource": "angular-uuid",
-  "_direct": true
+  "_target": "^0.1.0",
+  "_originalSource": "angular-uuid"
 }

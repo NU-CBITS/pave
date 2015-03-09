@@ -8,7 +8,7 @@
  * Controller of the paveApp
  */
 angular.module('paveApp')
-  .controller('HistoryCtrl', function ($scope,$routeParams,$filter,$location,Encounters,Users) {
+  .controller('HistoryCtrl', function ($scope,$routeParams,$filter,$location,uuid4,Encounters,Users) {
     $scope.subNavExists = true;
 
     $scope.subNavItems = [
@@ -24,7 +24,7 @@ angular.module('paveApp')
     $scope.encounterTasks   = Encounters.tasks;
 
     if($scope.userId == undefined){
-        $scope.clients  = Users.clients;
+        $scope.clients  = $filter('filter')(Users.users,{isClient:true},true);
         $scope.client   = { client: {} };
     } else {
         $scope.clients  = [Users.get($scope.userId)];
@@ -40,6 +40,7 @@ angular.module('paveApp')
    
         $.each($scope.encounterTasks,function(idx,el){
             recordToAdd.tasks.push({
+                id: uuid4.generate(),
                 name:el.name,
                 preVisit:{date:$scope.date.date,isCompleted:false}
             });

@@ -1,102 +1,104 @@
 <div class="row">
-
-	<div ng-include="'views/subnav.html'" class="col-md-2"></div>
-
-	<div class="col-md-10">
-
-
-	<div ng-switch on="type">
+  <div ng-include="'views/subnav.html'" class="col-md-1"></div>
+  <div class="col-md-11">
+    <div ng-switch on="type">
       <div ng-switch-when="upcoming">
-      <h2>Upcoming Sessions</h2>
-<!--       <table>
+        <h2>Upcoming Sessions</h2>
+        <!--       <table>
       <tr><th>User</th><th>Date</th><th></th></tr>
-      </table> -->
-      <i>No upcoming sessions</i>
-      </div>
-
+</table> --> 
+        <i>No upcoming sessions</i> </div>
       <div ng-switch-when="record">
-
-      <h2>Record a Session</h2>
-      <div class="well">
-            <p>To record a session, you will need to log into the Dropcam site and manage your username and password.</p>
-            <p>When you are done:
-            <ol>
+        <h2>Record a Session</h2>
+        <div class="well">
+          <p>To record a session, you will need to log into the Dropcam site and manage your username and password.</p>
+          <p>When you are done:
+          <ol>
             <li>Download the session</li>
             <li>Delete the session</li>
             <li>Upload the session here</li>
             <li>Label this session</li>
-            </ol>
-            </p>
+          </ol>
+          </p>
+        </div>
+        <a href="https://www.dropcam.com/watch/380e440d94ac481a9869796a2dc343f9" class="btn btn-danger">Record a Session</a><br/>
+        <br/>
+        <label for="subject">
+        <label for="session"> Session Label
+          <input type="text" class="form-control" name="session" id="session" />
+        </label>
+        <br/>
+        <label for="video"> Upload Video
+          <input type="file" class="form-control" name="video" id="video" />
+        </label>
+        <Br/>
+        <Br/>
+        <button type="submit" class="btn btn-success">Save Session</button>
       </div>
-      <a href="https://www.dropcam.com/watch/380e440d94ac481a9869796a2dc343f9" class="btn btn-danger">Record a Session</a><br/><br/>
-
-      <label for="subject">
-
-      <label for="session">
-      Session Label
-      <input type="text" class="form-control" name="session" id="session" />
-      </label>
-      <br/>
-      <label for="video">
-      Upload Video
-      <input type="file" class="form-control" name="video" id="video" />
-      </label><Br/>
-      <Br/>
-      <button type="submit" class="btn btn-success">Save Session</button>
-
-
-      </div>
-      
       <div ng-switch-default>
-      <h2>Review a Session</h2>
-      <div class="row">
-      <div class="col-md-5">
-            <video width="320" height="240" controls>
-                    <source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4">
-                    <source src="http://www.w3schools.com/html/movie.ogg" type="video/ogg">
-                    Your browser does not support the video tag.
-            </video>
-            <h3>Tag this timepoint:</h3>
-            <label class="label label-info">Remember: Tag a few seconds before the timepoint!</label>
+        <h2>Review a Session</h2>
+
+        <div class="row">
+          <div class="col-md-6">
+            
+            <videogular vg-theme="videogular.theme" vg-player-ready="videogular.onPlayerReady($API)" vg-complete="videogular.onCompleteVideo()">
+              <vg-media vg-src="videogular.sources">
+              </vg-media>       
+                <vg-controls>
+                  <vg-time-display>{{ currentTime | date:'mm:ss' }}</vg-time-display>
+                  <vg-scrub-bar>
+                    <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                  </vg-scrub-bar>
+                  <vg-time-display>{{ timeLeft | date:'mm:ss' }}</vg-time-display>
+                  <vg-volume>
+                    <vg-mute-button></vg-mute-button>
+                    <vg-volume-bar></vg-volume-bar>
+                  </vg-volume>
+                  <vg-fullscreen-button></vg-fullscreen-button>
+                </vg-controls>
+            </videogular>
             <div class="well">
-            <select name="timepoint_label" class="form-control">
-            <option>--</option>
-            </select>
-            <textarea name="timepoint_notes" class="form-control" placeholder="Add any notes"></textarea>
-            <button type="submit" class="btn btn-info">Save this tag</button>
+              <button ng-show="showPlayButton" ng-click="play()" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-play"></i> Play</button>
+
+              <button ng-show="showFreezeButton" ng-click="freezeForTagging()" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-pause"></i> Freeze and tag at {{videogular.API.currentTime | date:'mm:ss' }} </button>
+
+              <button ng-hide="showFreezeButton" class="btn btn-lg btn-primary btn-danger disabled">Frozen at {{videogular.API.currentTime | date:'mm:ss' }} </button>
+              <div ng-hide="showFreezeButton">
+                <h3>Add Tag</h3>
+                <select ng-model="timepoint.tag" class="form-control">
+                  <option ng-repeat="label in labels">{{label}}</option>
+                </select>
+                <textarea ng-model="timepoint.notes" class="form-control" placeholder="Add any notes"></textarea>
+                <button type="submit" class="btn btn-info btn-lg" ng-click="addTag()"><i class="glyphicon glyphicon-play"></i> Save Tag &amp; Continue Playing</button>
+              </div>
             </div>
+          </div>
+
+          <div class="col-md-6">
+            <button type="submit" class="disabled btn btn-warning">
+            no authorized user is logged in for session sharing
+            </button>
+            <br/>
+            <br/>
+            <table class="table table-rounded table-striped">
+              <tr>
+                <th>Timestamp</th>
+                <th>Label</th>
+                <th>Notes</th>
+                <th></th>
+              </tr>
+              <tr ng-repeat="timepoint in timepoints">
+                <td>{{timepoint.timestamp}}</td>
+                <td class=""><label class="label label-success">{{timepoint.tag}}</label></td>
+                <td>{{timepoint.notes}}</td>
+                <td><button class="btn btn-info" ng-click="jumpTo('{{timepoint.time}}')"><i class="glyphicon glyphicon-time"></i> jump</button></td>
+              </tr>
+            </table>
+            <div class="alert alert-warning" ng-show="timepoints.length < 1">no tags logged yet</div>
+
+          </div>
+        </div>
       </div>
-      <div class="col-md-7">
-      <button type="submit" class="disabled btn">cannot sync because
-      <b>Brigitta</b> is <label class="label label-warning">not logged in</label></button><br/><br/>
-  <!--     <button type="submit" class="btn btn-info">sync now
-      <b>Brigitta</b> is <label class="label label-success">logged in</label></button>
-      <br/><br/> -->
-
-      <table class="table table-rounded table-striped">
-      <tr><th>Timestamp</th><th>Label</th><th>Notes</th><th></th></tr>
-      <tr ng-repeat="timepoint in timepoints">
-            <td>{{timepoint.timestamp}}</td>
-            <td class=""><label class="label label-success">{{timepoint.label}}</label></td>
-            <td>{{timepoint.notes}}</td>
-            <td><button class="btn btn-info">jump to</button></td>
-
-
-
-      </tr>
-
-
-      </table>
-
-
-      </div>      
-      </div>
-     
-      </div>
+    </div>
   </div>
-
-
-
-	</div>
-
 </div>

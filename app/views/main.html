@@ -1,6 +1,6 @@
 <div ng-show="userLoggedIn()">
 	<div class="jumbotron">
-		<h1>Welcome back, {{currentUser.name}}!</h1>
+		<h1>Welcome back, {{currentUser.username}}!</h1>
 		<p>You have 2 scheduled upcoming sessions!</p>
 	  <a ng-repeat="item in navItems" class="btn {{item.class}}" ng-href="#{{item.href}}">{{item.html}}</a>
 	</div>

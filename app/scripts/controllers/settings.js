@@ -9,9 +9,12 @@
  */
 angular.module('paveApp')
   .controller('SettingsCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
+  	$scope.alertMessage = '';
+
+    $scope.passwordReset = function(){
+
+    	$scope.alertMessage = 'Password reset email sent!';
+
+    }
   });

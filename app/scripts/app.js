@@ -19,7 +19,11 @@ angular
     'ngSanitize',
     'ngTouch',
     'firebase',
-    'uuid'
+    'uuid',
+    'com.2fdevs.videogular',
+    'com.2fdevs.videogular.plugins.controls',
+    'com.2fdevs.videogular.plugins.overlayplay',
+    'com.2fdevs.videogular.plugins.poster'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -91,20 +95,20 @@ angular
 
     $rootScope.footer     = 'Powered by CBITs';
     $rootScope.siteName   = 'PAVE';
-    $rootScope.appVersion = '0.1.4';
+    $rootScope.appVersion = '0.2.4';
     $rootScope.dataIO     = 'https://pave.firebaseio.com';
 
     $rootScope.navItems = [
-      {html:'Users',href:'#/users',class:'btn-warning', icon:'user'},
-      {html:'Videos',href:'#/sessions',class:'btn-warning', icon:'facetime-video'},
-      {html:'Encounters',href:'#/history',class:'btn-warning', icon:'eye-open'}
+      {html:'Users',href:'#/users',class:'btn-primary', icon:'user'},
+      {html:'Videos',href:'#/sessions',class:'btn-primary', icon:'facetime-video'},
+      {html:'Encounters',href:'#/history',class:'btn-primary', icon:'eye-open'}
     ];
     
     $rootScope.settingsItems = [
       {html:'Settings', href:'#/users',class:'btn-default'}
     ];  
 
-    $rootScope.currentUser = 1;
+    $rootScope.currentUser = '1';
 
     $rootScope.userLoggedIn = function(){ 
 

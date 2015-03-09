@@ -29,7 +29,7 @@
 		<table class="table table-rounded table-striped">
             	<tr><th class="col-md-2">Client Name/ID</th><th class="col-md-2" ng-repeat="task in encounterTasks">{{task.label}}</th><th class="col-md-2">Actions</th></tr>
             	<tr ng-repeat="encounter in encounters">
-            	<td>{{encounter.subject.name}}</td>
+            	<td>{{encounter.subject.username}}</td>
             	<td ng-repeat="task in encounterTasks">		
             		{{encounter[$index].getItem(task.label).date}}
             		<!-- <i class="glyphicon glyphicon-check"></i> -->
@@ -38,7 +38,7 @@
             		<input type="date" name="date"/>
             		<a class="btn btn-info btn-xs">schedule</a>
             		</span> --></td>
-            	<td><button class="btn btn-danger btn-xs">move to history</button></td>
+            	<td><button class="btn btn-danger btn-xs" ng-click="moveToHistory('{{}}')">move to history</button></td>
       	     </tr>
       </table>
       </div>
