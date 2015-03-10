@@ -7,17 +7,18 @@
 		<th>Issue</th><th>Did it happen?<br/> (check if yes)</th><th>How distressing was it?<br/>What was your response?</th></tr>
 		<tr ng-repeat="issue in issues">
 				<td>{{issue}}</td>
-				<td><input ng-model='issueHappened' type="checkbox" value="{{issue}}"></td>
+				<td><input ng-model='issueHappened' type="checkbox" value="{{issue}}" ng-click="issueChecked()"></td>
 				<td><select ng-model='issueDistressLevel' class="col-xs-12">
-						<option value="0">Did Not Occur</option>
-						<option value="1">Occurred &amp; Not Stressful</option>
-						<option value="2">Occurred &amp; Stressful</option>
+						<option value="0">0 - Did Not Occur</option>
+						<option value="1">1 - Occurred &amp; Not Stressful</option>
+						<option value="2">2 - Occurred &amp; Stressful</option>
 <!-- 						<option value="3">Occurred &amp; Wanted to Use Drugs</option>
  -->					</select>
 				<br/>
 					<input type="text" name="issueResponse" placeholder="response (if applicable)" class="col-xs-12">
 				</td>
 		</tr>
+		<tr><td></td><td>{{issueHappenedLength}}</td><td></td></tr>
 	</table>
 
 

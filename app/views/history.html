@@ -33,7 +33,7 @@
             	<td ng-repeat="task in encounterTasks">		
             		{{encounter[$index].getItem(task.label).date}}
             		<!-- <i class="glyphicon glyphicon-check"></i> -->
-            		<a class="btn btn-success btn-xs">mark as completed</a>
+            		<a class="btn btn-success btn-xs" ng-href="{{encounter.questionnaire}}">mark as completed</a>
             		<!-- <span>
             		<input type="date" name="date"/>
             		<a class="btn btn-info btn-xs">schedule</a>

@@ -88,14 +88,13 @@
                 <th></th>
               </tr>
               <tr ng-repeat="timepoint in timepoints">
-                <td>{{timepoint.timestamp}}</td>
-                <td class=""><label class="label label-success">{{timepoint.tag}}</label></td>
+                <td>{{timepoint.time | date:'mm:ss'}}</td>
+                <td><label class="label label-success">{{timepoint.tag}}</label></td>
                 <td>{{timepoint.notes}}</td>
                 <td><button class="btn btn-info" ng-click="jumpTo('{{timepoint.time}}')"><i class="glyphicon glyphicon-time"></i> jump</button></td>
               </tr>
             </table>
             <div class="alert alert-warning" ng-show="timepoints.length < 1">no tags logged yet</div>
-
           </div>
         </div>
       </div>

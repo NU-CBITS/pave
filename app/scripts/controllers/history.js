@@ -42,7 +42,8 @@ angular.module('paveApp')
             recordToAdd.tasks.push({
                 id: uuid4.generate(),
                 name:el.name,
-                preVisit:{date:$scope.date.date,isCompleted:false}
+                preVisit:{date:$scope.date.date,isCompleted:false},
+                questionnaire: el.questionnaire
             });
         });
 

@@ -22,6 +22,13 @@ angular.module('paveApp')
 
   	}
 
+    $scope.issueHappened = '';
+    $scope.issueHappenedLength = $scope.issueHappened.split(",").length;
+
+    $scope.issueChecked = function(){
+      debugger;
+    }
+
   	$scope.cravingsTrue = false;
 
   	$scope.cravings = function(yes_no){
