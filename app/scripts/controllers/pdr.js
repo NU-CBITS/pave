@@ -6,6 +6,7 @@
  * @description
  * # PdrCtrl
  * Controller of the paveApp
+ * content for the parent daily call included
  */
 angular.module('paveApp')
   .controller('PdrCtrl', function ($scope,$location) {
