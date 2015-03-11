@@ -6,6 +6,9 @@
  * @description
  * # FidelityquestionnaireCtrl
  * Controller of the paveApp
+ * This controller details the questions in the fidelity questionnaire 
+ * to be delivered in the final step of the encounter process
+ * as of 3/10/15 Lisa Saldana reported that these questions are not finalized
  */
 angular.module('paveApp')
   .controller('FidelityquestionnaireCtrl', function ($scope, $location) {
