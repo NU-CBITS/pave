@@ -6,6 +6,7 @@
  * @description
  * # UsersCtrl
  * Controller of the paveApp
+ * provides an overvew of users in the application
  */
 angular.module('paveApp')
   .controller('UsersCtrl', function ($scope, $routeParams, $filter, $sce, Users) {

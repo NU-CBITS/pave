@@ -6,6 +6,7 @@
  * @description
  * # UserCtrl
  * Controller of the paveApp
+ * show / edit page for an individual user
  */
 angular.module('paveApp')
   .controller('UserCtrl', function ($scope, $routeParams, $filter, $location, Users, uuid4) {
