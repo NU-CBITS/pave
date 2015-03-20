@@ -20,27 +20,27 @@
   <h4>User Role:</h4>
   <div class="checkbox">
     <label>
-      <input type="checkbox" ng-model="user.isAdmin">Administrator
+      <input type="checkbox" ng-model="user.isAdmin" ng-disabled="user.isClient == true || user.isPDRcaller == true">Administrator
     </label>
   </div>
     <div class="checkbox">
     <label>
-      <input type="checkbox" ng-model="user.isSupervisor">Supervisor
+      <input type="checkbox" ng-model="user.isSupervisor" ng-disabled="user.isClient == true || user.isPDRcaller == true">Supervisor
     </label>
   </div>
   <div class="checkbox">
     <label>
-      <input type="checkbox" ng-model="user.isProvider">Provider
+      <input type="checkbox" ng-model="user.isProvider" ng-disabled="user.isClient == true || user.isPDRcaller == true" >Provider
     </label>
   </div>
-  <div class="checkbox">
+  <div class="checkbox" >
     <label>
-      <input type="checkbox" ng-model="user.isPDRcaller">PDR Caller
+      <input type="checkbox" ng-model="user.isPDRcaller" ng-disabled="user.isClient == true || user.isSupervisor == true || user.isProvider == true || user.isAdministrator == true">PDR Caller
     </label>
   </div>
-  <div class="checkbox">
+  <div class="checkbox" >
     <label>
-      <input type="checkbox" ng-model="user.isClient">Client
+      <input type="checkbox" ng-model="user.isClient" ng-disabled="user.isPDRcaller == true || user.isSupervisor == true || user.isProvider == true || user.isAdministrator == true" >Client
     </label>
   </div>
   <div ng-show="user.isProvider == true || user.isPDRcaller == true" class="form-controls">
