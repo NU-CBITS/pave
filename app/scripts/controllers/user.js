@@ -13,7 +13,7 @@ angular.module('paveApp')
 
 
   	$scope.userId       = $routeParams.userId || null;
-  	$scope.user         = Users.get($scope.userId) || { id:uuid4.generate(), isAdmin:false, isProvider:false, isClient:false, createdAt:new Date() };
+  	$scope.user         = Users.get($scope.userId) || { id:uuid4.generate(), isAdmin:false, isProvider:false, isClient:false, isPDRcaller:false, isSupervisor:false, createdAt:new Date() };
     $scope.alertMessage = '';
 
   	$scope.saveUser = function(nextLocation){
