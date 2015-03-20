@@ -20,7 +20,7 @@ angular.module('paveApp')
 
   var service = {};
 
-  service.numberOfEncounters = 8;
+  service.numberOfEncounters = 16;
 
   service.tasks = [
     {order:1, label:'Pre Visit Coaching', name:'preVisit'},
@@ -44,7 +44,7 @@ angular.module('paveApp')
 
   service.template = function(){
     var templateArray = []; 
-    var i=0
+    var i=1
       for (i=0;i<=service.numberOfEncounters;i++)
       {
           templateArray.push({session:i, tasks:service.tasks})
