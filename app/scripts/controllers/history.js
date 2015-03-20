@@ -18,6 +18,20 @@ angular.module('paveApp')
     $scope.encounterTasks       = Encounters.tasks;
     $scope.encounters           = Encounters.get($scope.userId);
 
+    $scope.selectedTaskName         =  "";
+    $scope.selectedSessionNumber    =  "";
+
+    $scope.showModal = function(number,name){
+
+        $('.modal').modal();
+        
+        $scope.selectedTaskName         =  name;
+    
+        $scope.selectedSessionNumber    =  number;
+
+
+    }
+
     $scope.movedToHistory = function(){};
 
 

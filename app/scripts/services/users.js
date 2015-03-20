@@ -25,15 +25,15 @@ angular.module('paveApp')
 
   service.users = [
   	{id:'1',username:'Lisa',firstName:'Lisa',lastName:'Saldana',email:"lisa@oslc.org",isAdmin:true,isProvider:true,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
-		{id:'2',username:'Mark',email:"m.begale@gmail.com",isAdmin:true,isProvider:true,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
-		{id:'3',username:'Baroness Schrader',email:"baroness@schrader.com",isAdmin:true,isProvider:true,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
-    {id:'4',username:'Maria Von Trapp',email:"maria@vontrapp.org",isAdmin:false,isProvider:true,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
-  	{id:'5',username:'Colonel Von Trapp',email:"plummer@vontrapp.org",isAdmin:true,isProvider:true,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
-    {id:'6',username:'Louisa',email:"louisa@vontrapp.org",isAdmin:true,isProvider:false,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
-    {id:'8',username:'Liesl',email:"Liesl@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
-    {id:'9',username:'Kurt',email:"kurt@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
-    {id:'10',username:'Marta',email:"marta@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
-    {id:'11',username:'Friedrich',email:"frierich@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''}
+		{id:'2',username:'Mark',firstName:'Mark',lastName:'Begale',email:"m.begale@gmail.com",isAdmin:true,isProvider:true,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
+		{id:'3',username:'Baroness',firstName:'Baroness',lastName:'Schrader',email:"baroness@schrader.com",isAdmin:true,isProvider:true,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
+    {id:'4',username:'Maria',firstName:'Maria',lastName:'Von Trapp',email:"maria@vontrapp.org",isAdmin:false,isProvider:true,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
+  	{id:'5',username:'Colonel',firstName:'Christopher',lastName:'Plummer',email:"plummer@vontrapp.org",isAdmin:true,isProvider:true,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
+    {id:'6',username:'Louisa',firstName:'Louisa',lastName:'Von Trapp',email:"louisa@vontrapp.org",isAdmin:true,isProvider:false,isClient:false,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
+    {id:'8',username:'Liesl',firstName:'Liesl',lastName:'Von Trapp',email:"Liesl@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
+    {id:'9',username:'Kurt',firstName:'Kurt',lastName:'Von Trapp',email:"kurt@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
+    {id:'10',username:'Marta',firstName:'Marta',lastName:'Von Trapp',email:"marta@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''},
+    {id:'11',username:'Friedrich',firstName:'Freddy',lastName:'Plummer',email:"frierich@vontrapp.org",isAdmin:false,isProvider:false,isClient:true,isPDRcaller:false,isSupervisor:false,createdAt:'',lastLogin:''}
   ];
 
   service.upsert = function(object){
