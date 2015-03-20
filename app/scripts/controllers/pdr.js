@@ -23,11 +23,24 @@ angular.module('paveApp')
 
   	}
 
-    $scope.issueHappened = '';
-    $scope.issueHappenedLength = $scope.issueHappened.split(",").length;
+    $scope.issueHappened      = [];
+    $scope.issueDistressLevel = {};
+    $scope.issueResponse      = {};
 
-    $scope.issueChecked = function(){
-      debugger;
+    $scope.issueHappenedToggle = function(issue){
+    
+      var idx = $scope.issueHappened.indexOf(issue);
+
+      // is currently selected
+      if (idx > -1) {
+        $scope.issueHappened.splice(idx, 1);
+      }
+
+      // is newly selected
+      else {
+        $scope.issueHappened.push(issue);
+      }
+
     }
 
   	$scope.cravingsTrue = false;

@@ -15,8 +15,8 @@
                         <td><a class="btn" ng-href="#/sessions/review/{{userId}}"><i class="glyphicon glyphicon-facetime-video"></i></td>
                         <td ng-repeat="task in encounterTasks">
 
-                              <a class="btn btn-info" ng-href="{{task.questionnaire}}" ng-show="task.questionnaire != undefined">complete</a>
-                              <a class="btn btn-info" ng-click="completionDialogue()" ng-show="task.questionnaire == undefined">complete</a>
+                              <a class="btn btn-warning" ng-href="{{task.questionnaire}}" ng-show="task.questionnaire != undefined">mark for completion</a>
+                              <a class="btn btn-warning" ng-click="completionDialogue('{{task.name}}')" ng-show="task.questionnaire == undefined">mark for completion</a>
 
                         </td>
                   </tr>
