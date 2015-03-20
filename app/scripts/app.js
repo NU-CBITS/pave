@@ -51,9 +51,6 @@ angular
         templateUrl: 'views/user.html',
         controller: 'UserCtrl'
       })
-      .otherwise({
-        redirectTo: '/'
-      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
@@ -70,7 +67,7 @@ angular
         templateUrl: 'views/sessions.html',
         controller: 'SessionsCtrl'
       })
-      .when('/sessions/:type', {
+      .when('/sessions/:type/:userId', {
         templateUrl: 'views/sessions.html',
         controller: 'SessionsCtrl'
       })
@@ -82,20 +79,19 @@ angular
         templateUrl: 'views/history.html',
         controller: 'HistoryCtrl'
       })
-      .when('/history/:type', {
+      .when('/history/:userId', {
         templateUrl: 'views/history.html',
         controller: 'HistoryCtrl'
-      })
-      .when('/history/:type/:userId', {
-        templateUrl: 'views/history.html',
-        controller: 'HistoryCtrl'
+      })      
+      .otherwise({
+        redirectTo: '/'
       })
       
   }).run(function($rootScope,$cookies) {
 
     $rootScope.footer     = 'Powered by CBITs';
     $rootScope.siteName   = 'PAVE';
-    $rootScope.appVersion = '0.2.4';
+    $rootScope.appVersion = '0.2.5';
     $rootScope.dataIO     = 'https://pave.firebaseio.com';
 
     $rootScope.navItems = [

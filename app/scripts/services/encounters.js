@@ -20,6 +20,8 @@ angular.module('paveApp')
 
   var service = {};
 
+  service.numberOfEncounters = 8;
+
   service.tasks = [
     {order:1, label:'Pre Visit Coaching', name:'preVisit'},
     {order:2, label:'Visitation', name:'visitation'},
@@ -31,8 +33,24 @@ angular.module('paveApp')
 
   service.contents = [];
 
-  service.add = function(object){
-  	service.contents.push(object);
+  service.get = function(userId){
+
+    var table = service.template();
+
+    //add server side logic to update for user specific needs
+
+    return table
+  }
+
+  service.template = function(){
+    var templateArray = []; 
+    var i=0
+      for (i=0;i<=service.numberOfEncounters;i++)
+      {
+          templateArray.push({session:i, tasks:service.tasks})
+      }
+
+    return templateArray
   }
 
   return service
