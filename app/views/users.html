@@ -12,8 +12,10 @@
 						<th>Email</th>
 						<th>First Name</th>
 						<th>Last Name</th>
-						<th ng-show="userType != 'clients'">Is Admin?</th>
-						<th ng-show="userType != 'clients'">Is Provider?</th>
+						<th ng-show="userType != 'clients'">Admin</th>
+						<th ng-show="userType != 'clients'">Supervisor</th>
+						<th ng-show="userType != 'clients'">PDR Caller</th>
+						<th ng-show="userType != 'clients'">Provider</th>
 						<th>Actions</th>
 					</tr>
 					<tr ng-repeat="user in users()">
@@ -22,6 +24,8 @@
 						<td>{{user.firstName}}</td>
 						<td>{{user.lastName}}</td>
 						<td ng-show="userType != 'clients'" ng-bind-html="booleanFormatter(user.isAdmin)"></td>
+						<td ng-show="userType != 'clients'" ng-bind-html="booleanFormatter(user.isSupervisor)"></td>
+						<td ng-show="userType != 'clients'" ng-bind-html="booleanFormatter(user.isPDRcaller)"></td>
 						<td ng-show="userType != 'clients'" ng-bind-html="booleanFormatter(user.isProvider)"></td>
 						<td>
 							<a ng-href="#/history/{{user.id}}" class="btn btn-sm btn-info"><i class="glyphicon glyphicon-eye-open"></i></a> 

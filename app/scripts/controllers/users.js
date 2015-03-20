@@ -22,7 +22,7 @@ angular.module('paveApp')
     $scope.pageTitle    = $filter('filter')($scope.subNavItems,{userType:$scope.userType},true)[0].html;
     
     $scope.users = function (){ 
-        var contents = {}
+        var contents = {};
 
         contents.clients = $filter('filter')(Users.users, {isClient:true},true);
 
