@@ -6,6 +6,7 @@
  * @description
  * # SessionsCtrl
  * Controller of the paveApp
+ * provides the video review functionality of the application
  */
 angular.module('paveApp')
   .controller('SessionsCtrl', function ($scope,$sce,$routeParams,$filter) {
