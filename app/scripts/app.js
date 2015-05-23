@@ -23,7 +23,8 @@ angular
     'com.2fdevs.videogular',
     'com.2fdevs.videogular.plugins.controls',
     'com.2fdevs.videogular.plugins.overlayplay',
-    'com.2fdevs.videogular.plugins.poster'
+    'com.2fdevs.videogular.plugins.poster',
+
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -67,7 +68,11 @@ angular
         templateUrl: 'views/sessions.html',
         controller: 'SessionsCtrl'
       })
-      .when('/sessions/:type/:userId', {
+      .when('/sessions/:type/:userId/:session', {
+        templateUrl: 'views/sessions.html',
+        controller: 'SessionsCtrl'
+      })
+      .when('/sessions/:type/:userId/:session/:event', {
         templateUrl: 'views/sessions.html',
         controller: 'SessionsCtrl'
       })
@@ -89,10 +94,16 @@ angular
       
   }).run(function($rootScope,$cookies) {
 
-    $rootScope.footer     = 'Powered by CBITs';
-    $rootScope.siteName   = 'PAVE';
-    $rootScope.appVersion = '0.2.5';
-    $rootScope.dataIO     = 'https://pave.firebaseio.com';
+    $rootScope.footer         = 'Powered by CBITs';
+    $rootScope.siteName       = 'PAVE';
+    $rootScope.appVersion     = '0.3.2';
+    $rootScope.dataIO         = 'https://pave.firebaseio.com';
+    $rootScope.dataIOType     = '.json';
+    $rootScope.videoUploadURL = 'http://mohrlab.northwestern.edu/pave/videos';
+    $rootScope.currentMainURL = 'http://localhost:9000';
+
+    $rootScope.errors = {};
+    $rootScope.errors.connectivity = 'We\'re sorry, there seems to be an issue with connectivity, please check your connection and try again!';
 
     $rootScope.navItems = [
       {html:'Users',href:'#/users',class:'btn-primary', icon:'user'},

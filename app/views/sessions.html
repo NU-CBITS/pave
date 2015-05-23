@@ -1,42 +1,31 @@
-<div class="row">
-  <div ng-include="'views/subnav.html'" class="col-md-1"></div>
-  <div class="col-md-11">
-    <div ng-switch on="type">
-      <div ng-switch-when="upcoming">
-        <h2>Upcoming Sessions</h2>
-        <!--       <table>
-      <tr><th>User</th><th>Date</th><th></th></tr>
-</table> --> 
-        <i>No upcoming sessions</i> </div>
+<div ng-hide="sessionExists" class="text-center">
+    <h2>{{sessionMessage}}</h2>
+    <img src="images/spinner.gif"/>
+    <div ng-show="error != ''" class="alert alert-danger">{{error}}</div>
+</div>
+
+<div class="row" ng-show="sessionExists">
+<!--   <div ng-include="'views/subnav.html'" class="col-md-1"></div>
+ --><div class="col-md-12">
+    <div ng-switch on="type" >
       <div ng-switch-when="record">
-        <h2>Record a Session</h2>
-        <div class="well">
-          <p>To record a session, you will need to log into the Dropcam site and manage your username and password.</p>
+        <h2>Upload Video for Session #{{session}}</h2>
+        <iframe src="{{videoUploadIFrameURL}}" frameborder='0' class="col-md-12" scrolling="no" style="height:75px; margin:0; padding:0;"></iframe><br/><br/><br/><br/>
+
+         <div class="well">
+          <p>To add a session, you will need to log into the <a href="https://www.dropcam.com" class="btn btn-sm btn-info">Dropcam site</a> and manage your username and password.</p>
           <p>When you are done:
           <ol>
-            <li>Download the session</li>
-            <li>Delete the session</li>
+            <li>Download the session from the DropCam site</li>
+            <li>Delete the session from the DropCam site</li>
             <li>Upload the session here</li>
-            <li>Label this session</li>
+            <li>Archive the file you uploaded on your local machine</li>
           </ol>
           </p>
         </div>
-        <a href="https://www.dropcam.com/watch/380e440d94ac481a9869796a2dc343f9" class="btn btn-danger">Record a Session</a><br/>
-        <br/>
-        <label for="subject">
-        <label for="session"> Session Label
-          <input type="text" class="form-control" name="session" id="session" />
-        </label>
-        <br/>
-        <label for="video"> Upload Video
-          <input type="file" class="form-control" name="video" id="video" />
-        </label>
-        <Br/>
-        <Br/>
-        <button type="submit" class="btn btn-success">Save Session</button>
       </div>
       <div ng-switch-default>
-        <h2>Review a Session</h2>
+        <h2>Review Session #{{session}}</h2>
 
         <div class="row">
           <div class="col-md-6">
@@ -75,8 +64,8 @@
           </div>
 
           <div class="col-md-6">
-            <button type="submit" class="disabled btn btn-warning">
-            no authorized user is logged in for session sharing
+            <button type="submit" class="active btn btn-success">
+            Your collaborator Mark is logged in!
             </button>
             <br/>
             <br/>
@@ -87,7 +76,7 @@
                 <th>Notes</th>
                 <th></th>
               </tr>
-              <tr ng-repeat="timepoint in timepoints">
+              <tr ng-repeat="timepoint in timepoints" ng-show="timepoint.time != undefined">
                 <td>{{timepoint.time | date:'mm:ss'}}</td>
                 <td><label class="label label-success">{{timepoint.tag}}</label></td>
                 <td>{{timepoint.notes}}</td>

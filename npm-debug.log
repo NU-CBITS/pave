@@ -1,0 +1,77 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'update', '-g', 'bower' ]
+2 info using npm@2.1.11
+3 info using node@v0.10.21
+4 silly mapToRegistry name bower
+5 silly mapToRegistry using default registry
+6 silly mapToRegistry registry https://registry.npmjs.org/
+7 silly mapToRegistry uri https://registry.npmjs.org/bower
+8 verbose request uri https://registry.npmjs.org/bower
+9 verbose request no auth needed
+10 info attempt registry request try #1 at 09:28:18
+11 verbose request id b39c093bbd71238f
+12 verbose etag "51BJED1C4RZB5W48BK7WRUX2L"
+13 http request GET https://registry.npmjs.org/bower
+14 silly mapToRegistry name bower
+15 silly mapToRegistry using default registry
+16 silly mapToRegistry registry https://registry.npmjs.org/
+17 silly mapToRegistry uri https://registry.npmjs.org/bower
+18 verbose request uri https://registry.npmjs.org/bower
+19 verbose request no auth needed
+20 info attempt registry request try #1 at 09:28:19
+21 verbose etag "51BJED1C4RZB5W48BK7WRUX2L"
+22 http request GET https://registry.npmjs.org/bower
+23 http 200 https://registry.npmjs.org/bower
+24 silly get cb [ 200,
+24 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+24 silly get     etag: '"2F6QOHAN32RHF1UPBE8U3305L"',
+24 silly get     'content-type': 'application/json',
+24 silly get     'cache-control': 'max-age=60',
+24 silly get     'content-length': '112124',
+24 silly get     'accept-ranges': 'bytes',
+24 silly get     date: 'Sat, 23 May 2015 14:28:19 GMT',
+24 silly get     via: '1.1 varnish',
+24 silly get     age: '11',
+24 silly get     connection: 'keep-alive',
+24 silly get     'x-served-by': 'cache-dfw1829-DFW',
+24 silly get     'x-cache': 'HIT',
+24 silly get     'x-cache-hits': '1',
+24 silly get     'x-timer': 'S1432391299.405911,VS0,VE0',
+24 silly get     vary: 'Accept' } ]
+25 http 200 https://registry.npmjs.org/bower
+26 silly get cb [ 200,
+26 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 silly get     etag: '"2F6QOHAN32RHF1UPBE8U3305L"',
+26 silly get     'content-type': 'application/json',
+26 silly get     'cache-control': 'max-age=60',
+26 silly get     'content-length': '112124',
+26 silly get     'accept-ranges': 'bytes',
+26 silly get     date: 'Sat, 23 May 2015 14:28:19 GMT',
+26 silly get     via: '1.1 varnish',
+26 silly get     age: '12',
+26 silly get     connection: 'keep-alive',
+26 silly get     'x-served-by': 'cache-dfw1827-DFW',
+26 silly get     'x-cache': 'HIT',
+26 silly get     'x-cache-hits': '1',
+26 silly get     'x-timer': 'S1432391299.787831,VS0,VE0',
+26 silly get     vary: 'Accept' } ]
+27 info outdated updating [ [ '/usr/local/lib', 'bower', '1.3.12', '1.4.1', '1.4.1', 'latest' ],
+27 info outdated   [ '/usr/local/lib/node_modules/foundation-cli',
+27 info outdated     'bower',
+27 info outdated     '1.3.12',
+27 info outdated     '1.4.1',
+27 info outdated     '1.4.1',
+27 info outdated     '^1.3.12' ] ]
+28 verbose stack Error: EMFILE, readdir '/usr/local/lib/node_modules/generator-d3chart/node_modules/yeoman-generator/node_modules/debug'
+29 verbose cwd /Users/markbegale/projects/pave
+30 error Darwin 14.0.0
+31 error argv "node" "/usr/local/bin/npm" "update" "-g" "bower"
+32 error node v0.10.21
+33 error npm  v2.1.11
+34 error path /usr/local/lib/node_modules/generator-d3chart/node_modules/yeoman-generator/node_modules/debug
+35 error code EMFILE
+36 error errno 20
+37 error EMFILE, readdir '/usr/local/lib/node_modules/generator-d3chart/node_modules/yeoman-generator/node_modules/debug'
+38 error If you need help, you may report this error at:
+38 error     <http://github.com/npm/npm/issues>
+39 verbose exit [ 20, true ]

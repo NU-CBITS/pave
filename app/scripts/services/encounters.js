@@ -28,7 +28,7 @@ angular.module('paveApp')
     {order:3, label:'PDR Call', name:'pdr', questionnaire:'#/pdr'},
     {order:4, label:'Session Calls', name:'session'},
     {order:5, label:'Intermediary Contacts', name:'intermediary'},
-    {order:6, label:'Fidelity Ratings', name:'fidelity',questionnaire:'#/fidelityquestionnaire'},
+    {order:6, label:'Fidelity Ratings', name:'fidelity',questionnaire:'#/fidelityQuestionnaire'},
   ];
 
   service.contents = [];

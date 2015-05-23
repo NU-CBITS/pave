@@ -45,6 +45,10 @@ angular.module('paveApp')
 
   	$scope.cravingsTrue = false;
 
+
+    $scope.distressScore = 0;
+
+
   	$scope.cravings = function(yes_no){
 
   		$scope.cravingsTrue = yes_no;

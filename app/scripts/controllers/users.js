@@ -18,19 +18,19 @@ angular.module('paveApp')
 	    {html:'Clients',userType:'clients',href:'#/users/clients',class:''},
     ];
 
-    $scope.userType     = $routeParams.userType || 'staff';
+    $scope.userType     = $routeParams.userType || 'clients';
     $scope.pageTitle    = $filter('filter')($scope.subNavItems,{userType:$scope.userType},true)[0].html;
     
     $scope.users = function (){ 
         var contents = {};
 
-        contents.clients = $filter('filter')(Users.users, {isClient:true},true);
+        contents.clients        = $filter('filter')(Users.users, {isClient:true},true);
 
         //four major study staff groups
         contents.administrators = $filter('filter')(Users.users, {isAdmin:true},true);
-        contents.providers = $filter('filter')(Users.users, {isProvider:true},true);
-        contents.PDRcallers = $filter('filter')(Users.users, {isPDRcaller:true},true);
-        contents.supervisors = $filter('filter')(Users.users, {isSupervisor:true},true);
+        contents.providers      = $filter('filter')(Users.users, {isProvider:true},true);
+        contents.PDRcallers     = $filter('filter')(Users.users, {isPDRcaller:true},true);
+        contents.supervisors    = $filter('filter')(Users.users, {isSupervisor:true},true);
 
         //aggregation of all staff
         contents.staff = $filter('filter')(Users.users, {isClient:false},true);

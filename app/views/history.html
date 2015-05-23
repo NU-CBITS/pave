@@ -11,13 +11,12 @@
                         <th class="col-md-2" ng-repeat="task in encounterTasks">{{task.label}}</th>
                   </tr>
             	<tr ng-repeat="encounterTask in encounters">
-                        <td>{{$index}}</td>
-                        <td><a class="btn" ng-href="#/sessions/review/{{userId}}"><i class="glyphicon glyphicon-facetime-video"></i></td>
+                        <td>{{$index+1}}</td>
+                        <td><a class="btn" ng-href="#/sessions/review/{{userId}}/{{$index+1}}"><i class="glyphicon glyphicon-facetime-video"></i></td>
                         <td ng-repeat="task in encounterTasks">
 
                               <a class="btn btn-warning" ng-href="{{task.questionnaire}}" ng-show="task.questionnaire != undefined">mark for completion</a>
                               <a class="btn btn-warning" ng-click="showModal($index,task.name)" ng-show="task.questionnaire == undefined">mark for completion</a>
-
                         </td>
                   </tr>
             </table>
@@ -30,12 +29,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Mark session #{{selectedSessionNumber}}: {{selectedTaskName}} as completed</h4>
+        <h4 class="modal-title">Mark session #{{selectedSessionNumber}}: {{selectedTaskName}} as completed on:</h4>
       </div>
       <div class="modal-body">
 
-      <label> Completed #{{selectedSessionNumber}}: {{selectedTaskName}} on:<br/>     <input type="date"></label><br/>
-      <textarea placeholder="Add any notes here"></textarea>
+      <input type="date"></label><br/>
+      <textarea placeholder="Add any notes here" class="col-md-12"></textarea>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

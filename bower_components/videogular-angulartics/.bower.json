@@ -1,17 +1,17 @@
 {
   "name": "videogular-angulartics",
-  "version": "1.0.1",
+  "version": "1.2.1",
   "main": "./vg-analytics.js",
   "dependencies": {
-    "videogular": "1.0.1",
+    "videogular": "1.2.1",
     "angulartics": "0.17.2"
   },
   "homepage": "https://github.com/2fdevs/bower-videogular-analytics",
-  "_release": "1.0.1",
+  "_release": "1.2.1",
   "_resolution": {
     "type": "version",
-    "tag": "v1.0.1",
-    "commit": "73a70aea2f2a0e95728d80c9030f2ab895566945"
+    "tag": "v1.2.1",
+    "commit": "6520b178718693ab572c80effe785c7404f0872a"
   },
   "_source": "git://github.com/2fdevs/bower-videogular-analytics.git",
   "_target": "^1.0.0",
