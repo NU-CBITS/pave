@@ -99,8 +99,8 @@ angular
     $rootScope.appVersion     = '0.3.2';
     $rootScope.dataIO         = 'https://pave.firebaseio.com';
     $rootScope.dataIOType     = '.json';
-    $rootScope.videoUploadURL = 'http://mohrlab.northwestern.edu/pave/videos';
-    $rootScope.currentMainURL = 'http://localhost:9000';
+    $rootScope.videoUploadURL = 'https://mohrlab.northwestern.edu/pave/videos';
+    $rootScope.currentMainURL = 'https:///pave.firebaseapp.com';
 
     $rootScope.errors = {};
     $rootScope.errors.connectivity = 'We\'re sorry, there seems to be an issue with connectivity, please check your connection and try again!';

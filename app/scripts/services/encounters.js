@@ -20,15 +20,14 @@ angular.module('paveApp')
 
   var service = {};
 
-  service.numberOfEncounters = 16;
+  service.numberOfEncounters = 15;
 
   service.tasks = [
-    {order:1, label:'Pre Visit Coaching', name:'preVisit'},
-    {order:2, label:'Visitation', name:'visitation'},
-    {order:3, label:'PDR Call', name:'pdr', questionnaire:'#/pdr'},
-    {order:4, label:'Session Calls', name:'session'},
-    {order:5, label:'Intermediary Contacts', name:'intermediary'},
-    {order:6, label:'Fidelity Ratings', name:'fidelity',questionnaire:'#/fidelityQuestionnaire'},
+    {order:1, label:'Pre Visit', name:'preVisit'},
+    {order:2, label:'Visit', name:'visitation'},
+    {order:3, label:'PDR', name:'pdr', questionnaire:'#/pdr'},
+    {order:4, label:'Session', name:'session'},
+    {order:5, label:'Fidelity', name:'fidelity',questionnaire:'#/fidelityQuestionnaire'},
   ];
 
   service.contents = [];

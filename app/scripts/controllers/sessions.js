@@ -26,7 +26,7 @@ angular.module('paveApp')
     var videoStorageURL = $rootScope.videoUploadURL + "/storage/" + $scope.userId + "/" + $scope.session;
 
     
-    $scope.labels = ['effort','small steps', 'relationship','humor', 'catch them being good' ];
+    $scope.labels = ['supportive response','encouragement','catch em being good','naming','shared focus of attention','interpreting cues','good direction','limit setting','boundary setting','reinforcement','redirection','use of incentive','when-then','avoid power struggle','pre-teaching','teaching','laugh/fun','play','acknowledge feelings','celebration','story telling','nurturing/warmth','manage stress','planning','asking','sympathize/empathize','ignoring'];
 
     $scope.timepoints = [];
     $scope.timepoint = {};
@@ -95,7 +95,6 @@ angular.module('paveApp')
                     $scope.jumpTime.id = data.id;
                     $scope.videogular.API.seekTime(data.timepoint/1000);
                     $scope.videogular.API.play();
-
                 }
 
             }

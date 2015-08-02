@@ -1,45 +1,50 @@
 <div class="row">
+    <div ng-include="'views/subnav.html'" class="col-md-1"></div>
 
-	<div ng-include="'views/subnav.html'" class="col-md-1"></div>
+    <div class="col-md-12">
+      <h2 class="col-md-8 text-left" style="margin:0; padding:0;">Review Encounters for {{client.firstName}} {{client.lastName}} </h2>
+      <button ng-click="" class="btn btn-info col-md-4">Log a supplemental contact <i class="glyphicon glyphicon-pencil"></i></button>
+    </div>
+    <div class="col-md-12">
 
-	<div class="col-md-12">
-      <h2>Review Encounters for {{client.firstName}} {{client.lastName}}</h2>
-		<table class="table table-rounded table-striped">
-            	<tr>
-                        <th>#</th>
-                        <th></th>
-                        <th class="col-md-2" ng-repeat="task in encounterTasks">{{task.label}}</th>
-                  </tr>
-            	<tr ng-repeat="encounterTask in encounters">
-                        <td>{{$index+1}}</td>
-                        <td><a class="btn" ng-href="#/sessions/review/{{userId}}/{{$index+1}}"><i class="glyphicon glyphicon-facetime-video"></i></td>
+        <label class="label label-warning">not yet started</label> <label class="label label-success">finished</label><br/><br/>
+        <table class="table table-rounded table-striped">
+            <tr>
+                <th>#</th>
+                <th></th>
+                <th class="col-md-2" ng-repeat="task in encounterTasks">{{task.label}}</th>
+            </tr>
+            <tr ng-repeat="encounterTask in encounters">
+                <td>{{$index+1}}</td>
+                <td><a class="btn" ng-href="#/sessions/review/{{userId}}/{{$index+1}}"><i class="glyphicon glyphicon-facetime-video"></i></td>
                         <td ng-repeat="task in encounterTasks">
 
-                              <a class="btn btn-warning" ng-href="{{task.questionnaire}}" ng-show="task.questionnaire != undefined">mark for completion</a>
-                              <a class="btn btn-warning" ng-click="showModal($index,task.name)" ng-show="task.questionnaire == undefined">mark for completion</a>
-                        </td>
-                  </tr>
-            </table>
-      </div>
-  </div>
+                              <a class="btn btn-warning" ng-href="{{task.questionnaire}}" ng-show="task.questionnaire != undefined"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a class="btn btn-warning" ng-click="showModal($index+1,task.name,task.label)" ng-show="task.questionnaire == undefined"><i class="glyphicon glyphicon-pencil"></i></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 
-
-  <div class="modal fade">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Mark session #{{selectedSessionNumber}}: {{selectedTaskName}} as completed on:</h4>
-      </div>
-      <div class="modal-body">
-
-      <input type="date"></label><br/>
-      <textarea placeholder="Add any notes here" class="col-md-12"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-success" data-dismiss="modal">Save and Mark as Completed</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+<div class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Mark Session #{{selectedSessionNumber}}: {{selectedTaskLabel}} as completed on:</h4>
+            </div>
+            <div class="modal-body">
+                <input type="date">
+                <br/>
+                <textarea placeholder="Add any notes here" class="col-md-12"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Save and Mark as Completed</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

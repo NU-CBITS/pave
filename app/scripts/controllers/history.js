@@ -21,13 +21,17 @@ angular.module('paveApp')
     $scope.selectedTaskName         =  "";
     $scope.selectedSessionNumber    =  "";
 
-    $scope.showModal = function(number,name){
+    $scope.showModal = function(number,name,label){
 
-        $('.modal').modal();
+        $('.modal').appendTo("body").modal('show');
+
+        console.log(number,name,label);
         
         $scope.selectedTaskName         =  name;
     
         $scope.selectedSessionNumber    =  number;
+
+        $scope.selectedTaskLabel         =  label;
 
 
     }
