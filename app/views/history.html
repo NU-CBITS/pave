@@ -3,7 +3,7 @@
 
     <div class="col-md-12">
       <h2 class="col-md-8 text-left" style="margin:0; padding:0;">Review Encounters for {{client.firstName}} {{client.lastName}} </h2>
-      <button ng-click="logSupplemental()" class="btn btn-info col-md-4">Log a supplemental contact <i class="glyphicon glyphicon-pencil"></i></button>
+      <button ng-click="showLogModal()" class="btn btn-info col-md-4">Logs <i class="glyphicon glyphicon-pencil"></i></button>
     </div>
     <div class="col-md-12">
 
@@ -16,11 +16,12 @@
             </tr>
             <tr ng-repeat="encounterTask in encounters">
                 <td>{{$index+1}}</td>
-                <td><a class="btn" ng-href="#/sessions/review/{{userId}}/{{$index+1}}"><i class="glyphicon glyphicon-facetime-video"></i></td>
-                        <td ng-repeat="task in encounterTasks">
-
-                              <a class="btn btn-warning" ng-href="{{task.questionnaire}}/{{userId}}" ng-show="task.questionnaire != undefined"><i class="glyphicon glyphicon-pencil"></i></a>
-                    <a class="btn btn-warning" ng-click="showModal($index+1,task.name,task.label)" ng-show="task.questionnaire == undefined"><i class="glyphicon glyphicon-pencil"></i></a>
+                <td>
+                    <a class="btn" ng-href="#/sessions/review/{{userId}}/{{$index+1}}"><i class="glyphicon glyphicon-facetime-video"></i>
+                </td>
+                <td ng-repeat="task in encounterTasks">
+                    <a class="btn btn-warning" ng-href="{{task.questionnaire}}/{{userId}}" ng-show="task.questionnaire != undefined"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a class="btn btn-warning" ng-click="showSessionModal($index+1,task.name,task.label)" ng-show="task.questionnaire == undefined"><i class="glyphicon glyphicon-pencil"></i></a>
                 </td>
             </tr>
         </table>
@@ -34,13 +35,13 @@
                 <h4 class="modal-title">Mark Session #{{selectedSessionNumber}}: {{selectedTaskLabel}} as completed on:</h4>
             </div>
             <div class="modal-body">
-                <input type="date">
+                <label> Date occurred: <input type="date" ng-model="currentSessionDate" ng-disabled="currentSessionDate != undefined"></label>
                 <br/>
-                <textarea placeholder="Add any notes here" class="col-md-12"></textarea>
+                <textarea ng-model="currentSessionNotes" placeholder="Add any notes here" style="width:100%;" ng-disabled="currentSessionNotes != undefined"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Save and Mark as Completed</button>
+                <button type="button" class="btn btn-success" ng-click="saveSession(selectedSessionNumber)">Save and Mark as Completed</button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -50,20 +51,25 @@
 <!-- /.modal -->
 
 
-<div class="modal fade" id="log-modal">
+<div class="modal" id="log-modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Add a Supplemental Log</h4>
             </div>
             <div class="modal-body">
-                <input type="date">
+                On {{currentDateTime | date : 'short'}}
                 <br/>
-                <textarea placeholder="Add any notes here" class="col-md-12"></textarea>
+                <textarea ng-model='lognotes' placeholder="Add any notes here" style="width:100%;"></textarea>
+                <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success pull-right" ng-click="saveLog()">Save</button>
+         <br/><br/>
+            <h5>Log History</h5>
+            <div class="well" ng-show="logs.length == 0">no logs added</div>
+            <div class="well" ng-repeat="log in logs">
+                <b>On {{log.date | date : 'short'}}</b><br/>
+                <p>{{log.notes}}</p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
             </div>
         </div>
         <!-- /.modal-content -->

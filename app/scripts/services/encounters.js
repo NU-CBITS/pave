@@ -41,12 +41,19 @@ angular.module('paveApp')
     return table
   }
 
+  service.set = function(userId,array){
+    //TODO set array on server
+
+    return array
+
+  }
+
   service.template = function(){
     var templateArray = []; 
     var i=1
       for (i=0;i<=service.numberOfEncounters;i++)
       {
-          templateArray.push({session:i, tasks:service.tasks})
+          templateArray.push({session:i, tasks:service.tasks, completed:false, date:'', notes:''})
       }
 
     return templateArray
