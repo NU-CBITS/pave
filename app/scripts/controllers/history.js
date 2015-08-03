@@ -23,7 +23,8 @@ angular.module('paveApp')
 
     $scope.showModal = function(number,name,label){
 
-        $('.modal').appendTo("body").modal('show');
+        $('#session-modal').modal('show');
+        $('.modal-backdrop').remove();
 
         console.log(number,name,label);
         
@@ -33,6 +34,10 @@ angular.module('paveApp')
 
         $scope.selectedTaskLabel         =  label;
 
+
+    }
+
+    $scope.logSupplemental= function(){
 
     }
 

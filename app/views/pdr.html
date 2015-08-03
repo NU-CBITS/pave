@@ -4,19 +4,18 @@
 	<h3>Think back over the last day. In the last 24 hours has {{client.name}} shown any of the following behaviors? <br/>If yes, was it stressful to you?</h3>
 
 	<table class="table table-striped table-rounded">
-		<th>Issue</th><th>Did it happen?<br/> (check if yes)</th><th>How distressing was it?<br/>What was your response?</th></tr>
+		<th>Issue</th><th>How distressing was it?<br/>What was your response?</th></tr>
 		<tr ng-repeat="issue in issues">
-				<td>{{issue}}</td>
-				<td><input name="issueHappened" type="checkbox" value="{{issue}}" ng-click="issueHappenedToggle(issue)" ng-checked="issueHappenedToggle.indexOf(issue) > -1"></td>
+				<td><h3>{{issue}}</h3></td>
 				<td>
-						<label><input type="radio" name="issueDistressLevel{{issue}}" value="0"> 0 - Did Not Occur</label><br/>
-						<label><input type="radio" name="issueDistressLevel{{issue}}" value="1"> 1 - Occurred &amp; Not Stressful</label><br/>
-						<label><input type="radio" name="issueDistressLevel{{issue}}" value="2"> 2 - Occurred &amp; Stressful</label>
+						<label class="btn btn-sm btn-default"><input type="radio" ng-model="issueDistressLevel[{{$index}}]" value="0"> 0 - Did Not Occur</label><br/>
+						<label class="btn btn-sm btn-default"><input type="radio" ng-model="issueDistressLevel[{{$index}}]" value="1"> 1 - Occurred &amp; Not Stressful</label><br/>
+						<label class="btn btn-sm btn-default"><input type="radio" ng-model="issueDistressLevel[{{$index}}]" value="2"> 2 - Occurred &amp; Stressful</label>
 				<br/>
 					<input type="text" name="issueResponse{{issue}}" placeholder="response (if applicable)" class="col-xs-12">
 				</td>
 		</tr>
-		<tr><td><h2>Score:</h2></td><td><h2> {{issueHappened.length}}</h2></td><td><h2>{{distressScore}}</h2></td></tr>
+		<tr><td><h2>Score:</h2></td><td><h2>{{issueHappened}}{{distressScore}}</h2></td></tr>
 	</table>
 
 
@@ -79,7 +78,8 @@
 		</label>
   </div>
   <div class="form-group">
-    <label for="cravingIntensity">Please rate your overall drug craving in the last 24 hours.<br/> On a scale of 1-10 with  1 being no craving at all and 10 being “all I wanted to do was use drugs”:
+    <label for="cravingIntensity">Please rate your overall drug craving in the last 24 hours.<br/> 
+    	On a scale of 1-10 with 1 being no craving at all and 10 being “all I wanted to do was use drugs”:
     <input class="form-control" name="cravingIntensity" id="cravingIntensity" type="number" min="0" max="10"></label>
   </div>
     <div class="form-group">

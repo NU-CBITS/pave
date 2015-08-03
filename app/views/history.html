@@ -3,7 +3,7 @@
 
     <div class="col-md-12">
       <h2 class="col-md-8 text-left" style="margin:0; padding:0;">Review Encounters for {{client.firstName}} {{client.lastName}} </h2>
-      <button ng-click="" class="btn btn-info col-md-4">Log a supplemental contact <i class="glyphicon glyphicon-pencil"></i></button>
+      <button ng-click="logSupplemental()" class="btn btn-info col-md-4">Log a supplemental contact <i class="glyphicon glyphicon-pencil"></i></button>
     </div>
     <div class="col-md-12">
 
@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="modal fade">
+<div class="modal" id="session-modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -41,6 +41,29 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-success" data-dismiss="modal">Save and Mark as Completed</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
+
+<div class="modal fade" id="log-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add a Supplemental Log</h4>
+            </div>
+            <div class="modal-body">
+                <input type="date">
+                <br/>
+                <textarea placeholder="Add any notes here" class="col-md-12"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
             </div>
         </div>
         <!-- /.modal-content -->
