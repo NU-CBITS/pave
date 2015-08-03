@@ -9,9 +9,12 @@
  * content for the parent daily call included
  */
 angular.module('paveApp')
-  .controller('PdrCtrl', function ($scope,$location) {
+  .controller('PdrCtrl', function ($scope,$location,$routeParams) {
     
-  	$scope.nextPage = '#/history/review';
+    $scope.userId = $routeParams.userId;
+
+  	$scope.nextPage = '#/history/review/' + $scope.userId;
+
 
   	$scope.issues = ['Animal Cruelty','Arguing','Backtalking','Bedwetting','Complaining','Daydreaming','Defiance','Depression/Sadness','Destructiveness','Encopresis','Fearfulness','Fighting','Interrupting','Irritability','Jealousy','Lying','Nervous/Jittery','Notminding','Pant Wetting','Pouting','School Problems','Sexual Behaviors','Short Attention Span','Sleep Problems/Nightmares','Sluggishness','Stealing','Swearing','Teasing','Worried/Anxious','Biting','Hitting','Loudness','Waking at night','Crying','Hyperactivity','Repetitive Questions','Tantrums','Whining','Yelling'];
 
@@ -19,7 +22,7 @@ angular.module('paveApp')
 
   	$scope.submit = function(){
 
-  		window.location.href = "#/history/review";
+  		window.location.href = $scope.nextPage;
 
   	}
 

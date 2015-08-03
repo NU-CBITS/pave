@@ -8,9 +8,9 @@
 		<tr ng-repeat="issue in issues">
 				<td><h3>{{issue}}</h3></td>
 				<td>
-						<label class="btn btn-sm btn-default"><input type="radio" ng-model="issueDistressLevel[{{$index}}]" value="0"> 0 - Did Not Occur</label><br/>
-						<label class="btn btn-sm btn-default"><input type="radio" ng-model="issueDistressLevel[{{$index}}]" value="1"> 1 - Occurred &amp; Not Stressful</label><br/>
-						<label class="btn btn-sm btn-default"><input type="radio" ng-model="issueDistressLevel[{{$index}}]" value="2"> 2 - Occurred &amp; Stressful</label>
+						<label class="btn btn-sm btn-default"><input type="radio" name="issueDistressLevel[{{$index}}]" value="0"> 0 - Did Not Occur</label><br/>
+						<label class="btn btn-sm btn-default"><input type="radio" name="issueDistressLevel[{{$index}}]" value="1"> 1 - Occurred &amp; Not Stressful</label><br/>
+						<label class="btn btn-sm btn-default"><input type="radio" name="issueDistressLevel[{{$index}}]" value="2"> 2 - Occurred &amp; Stressful</label>
 				<br/>
 					<input type="text" name="issueResponse{{issue}}" placeholder="response (if applicable)" class="col-xs-12">
 				</td>

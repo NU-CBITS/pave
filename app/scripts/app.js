@@ -36,11 +36,11 @@ angular
         templateUrl: 'views/record.html',
         controller: 'RecordCtrl'
       })
-      .when('/fidelityQuestionnaire', {
+      .when('/fidelityQuestionnaire/:userId', {
         templateUrl: 'views/fidelityquestionnaire.html',
         controller: 'FidelityquestionnaireCtrl'
       })
-      .when('/pdr', {
+      .when('/pdr/:userId', {
         templateUrl: 'views/pdr.html',
         controller: 'PdrCtrl'
       })
@@ -79,10 +79,6 @@ angular
       .when('/settings', {
         templateUrl: 'views/settings.html',
         controller: 'SettingsCtrl'
-      })
-      .when('/history', {
-        templateUrl: 'views/history.html',
-        controller: 'HistoryCtrl'
       })
       .when('/history/:userId', {
         templateUrl: 'views/history.html',

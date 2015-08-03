@@ -11,8 +11,9 @@
  * as of 3/9/15 Lisa Saldana reported that these questions are not finalized
  */
 angular.module('paveApp')
-  .controller('FidelityquestionnaireCtrl', function ($scope, $location) {
+  .controller('FidelityquestionnaireCtrl', function ($scope, $location, $routeParams) {
 
+    $scope.userId = $routeParams.userId;
 
   	$scope.content=['Discussion included specific information on reinforcing parents\’ efforts ','Discussion included reinforcing parent-child relationships','Discussion identified small steps case planners took or will take with families','Discussion included focus on small steps parents took or could take during the next week','Discussion included examples of supporting and encouraging parents','Discussion noted documenting parent accomplishments ','Solutions and strategies were	discussed in behavioral terms','Barriers to parental progress included discussion of how to help families overcome them'];
 
@@ -28,7 +29,7 @@ angular.module('paveApp')
 
   	$scope.submit = function(){
 
-  		$location.href = "#/history/review";
+  		$location.href = "#/history/" + $scope.userId;
 
   	}
 

@@ -19,7 +19,7 @@
                 <td><a class="btn" ng-href="#/sessions/review/{{userId}}/{{$index+1}}"><i class="glyphicon glyphicon-facetime-video"></i></td>
                         <td ng-repeat="task in encounterTasks">
 
-                              <a class="btn btn-warning" ng-href="{{task.questionnaire}}" ng-show="task.questionnaire != undefined"><i class="glyphicon glyphicon-pencil"></i></a>
+                              <a class="btn btn-warning" ng-href="{{task.questionnaire}}/{{userId}}" ng-show="task.questionnaire != undefined"><i class="glyphicon glyphicon-pencil"></i></a>
                     <a class="btn btn-warning" ng-click="showModal($index+1,task.name,task.label)" ng-show="task.questionnaire == undefined"><i class="glyphicon glyphicon-pencil"></i></a>
                 </td>
             </tr>
