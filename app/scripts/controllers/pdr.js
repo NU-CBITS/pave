@@ -9,12 +9,11 @@
  * content for the parent daily call included
  */
 angular.module('paveApp')
-  .controller('PdrCtrl', function ($scope,$location,$routeParams) {
+  .controller('PdrCtrl', function ($scope,$location,$routeParams,Encounters) {
     
     $scope.userId = $routeParams.userId;
-
-  	$scope.nextPage = '#/history/review/' + $scope.userId;
-
+    $scope.sessionIndex = $routeParams.sessionIndex;
+    $scope.taskIndex = $routeParams.taskIndex;
 
   	$scope.issues = ['Animal Cruelty','Arguing','Backtalking','Bedwetting','Complaining','Daydreaming','Defiance','Depression/Sadness','Destructiveness','Encopresis','Fearfulness','Fighting','Interrupting','Irritability','Jealousy','Lying','Nervous/Jittery','Notminding','Pant Wetting','Pouting','School Problems','Sexual Behaviors','Short Attention Span','Sleep Problems/Nightmares','Sluggishness','Stealing','Swearing','Teasing','Worried/Anxious','Biting','Hitting','Loudness','Waking at night','Crying','Hyperactivity','Repetitive Questions','Tantrums','Whining','Yelling'];
 
@@ -57,6 +56,12 @@ angular.module('paveApp')
   		$scope.cravingsTrue = yes_no;
 
   	}
+
+    $scope.submit = function(){
+      Encounters.setTaskCompleted($scope.userId,$scope.sessionIndex,$scope.taskIndex,$('form').serialize());
+      $location.path("history/" + $scope.userId);
+
+    }
 
 
   });

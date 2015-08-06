@@ -36,11 +36,11 @@ angular
         templateUrl: 'views/record.html',
         controller: 'RecordCtrl'
       })
-      .when('/fidelityQuestionnaire/:userId', {
+      .when('/fidelityQuestionnaire/:userId/:sessionIndex/:taskIndex', {
         templateUrl: 'views/fidelityquestionnaire.html',
         controller: 'FidelityquestionnaireCtrl'
       })
-      .when('/pdr/:userId', {
+      .when('/pdr/:userId/:sessionIndex/:taskIndex', {
         templateUrl: 'views/pdr.html',
         controller: 'PdrCtrl'
       })
