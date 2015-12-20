@@ -3,7 +3,6 @@
     <img src="images/spinner.gif"/>
     <div ng-show="error != ''" class="alert alert-danger">{{error}}</div>
 </div>
-
 <div class="row" ng-show="sessionExists">
 <!--   <div ng-include="'views/subnav.html'" class="col-md-1"></div>
  --><div class="col-md-12">
@@ -25,11 +24,9 @@
         </div>
       </div>
       <div ng-switch-default>
-        <h2>Review Session #{{session}}</h2>
-
+        <h4>Session #{{session}}</h4>
         <div class="row">
           <div class="col-md-6">
-            
             <videogular vg-theme="videogular.theme" vg-player-ready="videogular.onPlayerReady($API)" vg-complete="videogular.onCompleteVideo()">
               <vg-media vg-src="videogular.sources">
               </vg-media>       
@@ -47,38 +44,43 @@
                 </vg-controls>
             </videogular>
             <div class="well">
-              <button ng-show="showPlayButton" ng-click="play()" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-play"></i> Play</button>
+              <button ng-show="!playing" ng-click="play()" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-play"></i> Play</button>
 
-              <button ng-show="showFreezeButton" ng-click="freezeForTagging()" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-pause"></i> Freeze and tag at {{videogular.API.currentTime | date:'mm:ss' }} </button>
+              <button ng-show="playing" ng-click="pause()" class="btn btn-lg btn-warning"><i class="glyphicon glyphicon-pause"></i> Pause</button>              
 
-              <button ng-hide="showFreezeButton" class="btn btn-lg btn-primary btn-danger disabled">Frozen at {{videogular.API.currentTime | date:'mm:ss' }} </button>
-              <div ng-hide="showFreezeButton">
-                <h3>Add Tag</h3>
+              <button ng-show="!playing" ng-click="startTagging()" class="btn btn-lg btn-primary"><i class="glyphicon glyphicon-tag"></i> Tag a Clip</button>
+              
+              <div ng-show="tagging">
+                <h5>Add Tag</h5>
+                <label class="label label-success">Starting from from at {{currentStartTime | date:'mm:ss' }} </label>
                 <select ng-model="timepoint.tag" class="form-control">
                   <option ng-repeat="label in labels">{{label}}</option>
                 </select>
                 <textarea ng-model="timepoint.notes" class="form-control" placeholder="Add any notes"></textarea>
-                <button type="submit" class="btn btn-info btn-lg" ng-click="addTag()"><i class="glyphicon glyphicon-play"></i> Save Tag &amp; Continue Playing</button>
+                <button ng-show="timepoint.time == undefined" type="submit" class="btn btn-info btn-lg" ng-click="saveStartTag()"> Save Start Tag</button>
+                <button ng-show="timepoint.time != undefined && timepoint.timeEnd == undefined" type="submit" class="btn btn-info btn-lg" ng-click="saveEndTag()"> Save End Tag</button>
               </div>
             </div>
           </div>
 
           <div class="col-md-6">
-            <button type="submit" class="active btn btn-success">
-            Your collaborator Mark is logged in!
-            </button>
-            <br/>
+            <div class="alert alert-success">
+            Your collaborator(s) {{loggedInCollaborators}} logged in!
+            </div>
             <b>Tagged by:</b>  <label class="label label-warning">provider</label> <label class="label label-success">client</label><br/>
             <br/>
             <table class="table table-rounded table-striped">
               <tr>
-                <th>Timestamp</th>
+                <th>Start</th>
+                <th>End</th>
                 <th>Label</th>
                 <th>Notes</th>
                 <th></th>
               </tr>
-              <tr ng-repeat="timepoint in timepoints" ng-show="timepoint.time != undefined">
+              <tr ng-repeat="timepoint in timepoints track by $index" ng-show="timepoint.time != undefined">
                 <td>{{timepoint.time | date:'mm:ss'}}</td>
+                <td>{{timepoint.timeEnd | date:'mm:ss'}}</td>
+
                 <td><label class="label label-success">{{timepoint.tag}}</label></td>
                 <td>{{timepoint.notes}}</td>
                 <td><button class="btn btn-info" ng-click="jumpTo('{{timepoint.time}}')"><i class="glyphicon glyphicon-time"></i> jump</button></td>

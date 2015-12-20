@@ -8,14 +8,14 @@
 		<tr ng-repeat="issue in issues">
 				<td><h3>{{issue}}</h3></td>
 				<td>
-						<label class="btn btn-sm btn-default"><input type="radio" name="issueDistressLevel[{{$index}}]" value="0"> 0 - Did Not Occur</label><br/>
-						<label class="btn btn-sm btn-default"><input type="radio" name="issueDistressLevel[{{$index}}]" value="1"> 1 - Occurred &amp; Not Stressful</label><br/>
-						<label class="btn btn-sm btn-default"><input type="radio" name="issueDistressLevel[{{$index}}]" value="2"> 2 - Occurred &amp; Stressful</label>
+						<label class="btn btn-sm btn-default"><input type="radio" checked name="{{issue}}" value="0" class="pdr" ng-click="pdrSet($index,0)"> 0 - Did Not Occur</label><br/>
+						<label class="btn btn-sm btn-default"><input type="radio" name="{{issue}}" value="1" class="pdr" ng-click="pdrSet($index,1)"> 1 - Occurred &amp; Not Stressful</label><br/>
+						<label class="btn btn-sm btn-default"><input type="radio" name="{{issue}}" value="2" class="pdr" ng-click="pdrSet($index,2)"> 2 - Occurred &amp; Stressful</label>
 				<br/>
-					<input type="text" name="issueResponse{{issue}}" placeholder="response (if applicable)" class="col-xs-12">
+					<input type="text" name="{{issue}} Notes" placeholder="response (if applicable)" class="col-xs-12">
 				</td>
 		</tr>
-		<tr><td><h2>Score:</h2></td><td><h2>{{issueHappened}}{{distressScore}}</h2></td></tr>
+		<tr><td colspan="2"><h2>Number of issues: {{pdrScore(pdrScoreArray).core}}<br/>Issue Severity: {{pdrScore(pdrScoreArray).intensity}}</h2></td></tr>
 	</table>
 
 
@@ -26,7 +26,7 @@
 		<th>Issue</th><th>Did it happen?<br/> (check if yes)</th></tr>
 		<tr ng-repeat="feeling in feelings">
 				<td>{{feeling}}</td>
-				<td><input name='feeling' type="checkbox" value="{{feeling}}"></td>
+				<td><input name='Feeling' type="checkbox" value="{{feeling}}"></td>
 		</tr>
 	</table>
 
@@ -38,7 +38,7 @@
 
   <div class="form-group">
     <label for="usingDrugsThoughts">In the last 24 hours, how often have you thought about using drugs or about how good it would make you feel?
-    <select class="form-control" name="usingDrugsThoughts" id="usingDrugsThoughts">
+    <select class="form-control" name="Drugs" id="usingDrugsThoughts">
     	<option value="">choose an option</option>
 		  <option>Never</option>
 		  <option>Rarely</option>
@@ -51,7 +51,7 @@
   </div>
   <div class="form-group">
     <label for="cravingStrength">At its most severe point, how strong was your craving during the last day?
-    <select class="form-control" name="cravingStrength"  id="cravingStrength">
+    <select class="form-control" name="Cravings Strength"  id="cravingStrength">
     	<option value="">choose an option</option>
 		  <option>None at All</option>
 		  <option>Slight</option>
@@ -63,9 +63,14 @@
 		</select>
 		</label>
   </div>
+    <div class="form-group">
+    <label for="cravingIntensity">Please rate your overall drug craving in the last 24 hours.<br/> 
+    	On a scale of 1-10 with 1 being no craving at all and 10 being “all I wanted to do was use drugs”:
+    <input class="form-control" name="Craving Intensity" id="cravingIntensity" type="number" min="0" max="10"></label>
+  </div>
   <div class="form-group">
     <label for="resistanceDifficulty">During the last 24 hours, how difficult would it have been to resist taking a drug if you had known it was available?
-    <select class="form-control" name="resistanceDifficulty" id="resistanceDifficulty">
+    <select class="form-control" name="Resistance" id="resistanceDifficulty">
     	<option value="">choose an option</option>
 			<option>Not difficult at all</option>
 			<option>Very mildly difficult</option>
@@ -77,14 +82,10 @@
 		</select>
 		</label>
   </div>
-  <div class="form-group">
-    <label for="cravingIntensity">Please rate your overall drug craving in the last 24 hours.<br/> 
-    	On a scale of 1-10 with 1 being no craving at all and 10 being “all I wanted to do was use drugs”:
-    <input class="form-control" name="cravingIntensity" id="cravingIntensity" type="number" min="0" max="10"></label>
-  </div>
+
     <div class="form-group">
     <label for="positiveThing">Please tell me about one positive thing that has happened to you in the last 24 hours:
-    <input class="form-control" name="positiveThing" id="positiveThing" type="text"></label>
+    <input class="form-control" name="Positive Thing" id="positiveThing" type="text"></label>
   </div>
 </div>
   <button type="submit" class="btn btn-primary" ng-click="submit()">Save Your Responses</button>

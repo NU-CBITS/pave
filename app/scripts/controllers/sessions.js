@@ -23,12 +23,14 @@ angular.module('paveApp')
         };
         var sessionDataURL = $rootScope.dataIO + '/sessions/' + $scope.userId + '/' + $scope.session;
         var videoStorageURL = $rootScope.videoUploadURL + "/storage/" + $scope.userId + "/" + $scope.session;
+        
         $scope.labels = ['supportive response', 'encouragement', 'catch em being good', 'naming', 'shared focus of attention', 'interpreting cues', 'good direction', 'limit setting', 'boundary setting', 'reinforcement of effort','reinforcement of small steps','reinforcement of relationships and roles', 'redirection', 'use of incentive', 'when-then', 'avoid power struggle', 'pre-teaching', 'teaching', 'laugh/fun', 'play', 'acknowledge feelings', 'celebration', 'story telling', 'nurturing/warmth', 'manage stress', 'planning', 'asking', 'sympathize/empathize', 'ignoring'];
         $scope.timepoints = [];
         $scope.timepoint = {};
         $scope.showFreezeButton = true;
         $scope.showPlayButton = true;
         $scope.videoUploadIFrameURL = $sce.trustAsResourceUrl($rootScope.videoUploadURL + "/?session=" + $scope.session + "&userId=" + $scope.userId + "&bounceback=" + $rootScope.currentMainURL + "/#/sessions/review");
+       
         $http.get(sessionDataURL + $rootScope.dataIOType).
         success(function(data, status, headers, config) {
             if (data == null) {
@@ -44,6 +46,7 @@ angular.module('paveApp')
         error(function(data, status, headers, config) {
             $scope.error = $rootScope.errors.connectivity;
         });
+      
         $scope.subNavExists = true;
         $scope.subNavItems = [{
             html: 'Review',
@@ -62,21 +65,23 @@ angular.module('paveApp')
                 type: "video/mp4"
             }]
         }
+
+        $scope.playing = false;
+        $scope.tagging = false;
+        $scope.currentTag = {};
+
         $scope.videogular.onPlayerReady = function(API) {
             $scope.videogular.API = API;
         };
         $scope.videogular.onCompleteVideo = function() {
-            $scope.showFreezeButton = true;
-            $scope.showPlayButton = true;
+            $scope.playing = false;
         };
         $scope.freezeForTagging = function() {
             $scope.videogular.API.pause();
-            $scope.showFreezeButton = false;
             $scope.timepoint = {};
         }
         $scope.play = function() {
             $scope.videogular.API.play();
-            $scope.showPlayButton = false;
             (function tick() {
                 $http.get(sessionDataURL + "/lastSynchedAt.json").success(function(data, status, headers, config) {
                     if (data.id != $scope.jumpTime.id) {
@@ -87,22 +92,35 @@ angular.module('paveApp')
                 });
                 $timeout(tick, 1000);
             })();
+            $scope.playing = true;
         }
-        $scope.stop = function() {
-            $scope.videogular.API.stop();
-            $scope.showPlayButton = false;
+        $scope.pause = function() {
+            $scope.videogular.API.pause();
+            $scope.playing = false;
         }
-        $scope.addTag = function() {
-            var timepoint = {};
-            timepoint.time = $scope.videogular.API.currentTime;
-            timepoint.tag = $scope.timepoint.tag;
-            timepoint.notes = $scope.timepoint.notes;
-            timepoint.id = uuid4.generate();
-            $http.put(sessionDataURL + "/tags/" + $scope.timepoints.length + ".json", timepoint);
-            $scope.timepoints.push(timepoint);
-            $scope.videogular.API.play();
-            $scope.showFreezeButton = true;
+        $scope.startTagging = function() {
+            $scope.tagging = true;
+            $scope.currentStartTime = $scope.videogular.API.currentTime;
         }
+
+        $scope.saveStartTag = function(){
+            debugger;
+            $scope.timepoint.time = $scope.videogular.API.currentTime;
+            $scope.timepoint.tag = $scope.timepoint.tag;
+            $scope.timepoint.notes = $scope.timepoint.notes;
+            $scope.timepoint.id = uuid4.generate();
+            $scope.timepoints.push($scope.timepoint);
+            $scope.timepoint.position = $scope.timepoints.length;
+            $http.put(sessionDataURL + "/tags/" + $scope.timepoints.length + ".json", $scope.timepoint);
+        }
+
+        $scope.saveEndTag = function() {
+            $scope.timepoint.timeEnd = $scope.videogular.API.currentTime;
+            $scope.timepoints[$scope.timepoint.position]= $scope.timepoint;
+            $http.put(sessionDataURL + "/tags/" + $scope.timepoints.length + ".json", $scope.timepoint);
+            $scope.tagging = false;
+        }
+
         $scope.jumpTo = function(time) {
             $scope.videogular.API.seekTime(parseInt(time / 1000));
             $scope.jumpTime = {
@@ -113,4 +131,7 @@ angular.module('paveApp')
             $http.put(sessionDataURL + "/lastSynchedAt.json", $scope.jumpTime);
             $scope.videogular.API.play();
         }
+
+        $scope.stopAt = 0;
+
     });

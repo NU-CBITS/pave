@@ -17,39 +17,31 @@ angular.module('paveApp')
 
   	$scope.issues = ['Animal Cruelty','Arguing','Backtalking','Bedwetting','Complaining','Daydreaming','Defiance','Depression/Sadness','Destructiveness','Encopresis','Fearfulness','Fighting','Interrupting','Irritability','Jealousy','Lying','Nervous/Jittery','Notminding','Pant Wetting','Pouting','School Problems','Sexual Behaviors','Short Attention Span','Sleep Problems/Nightmares','Sluggishness','Stealing','Swearing','Teasing','Worried/Anxious','Biting','Hitting','Loudness','Waking at night','Crying','Hyperactivity','Repetitive Questions','Tantrums','Whining','Yelling'];
 
+    $scope.pdrScoreArray = new Array($scope.issues.length);
+
   	$scope.feelings = ['Stressed','Depressed','Positive','Hopeful','Overwhelmed'];
 
-  	$scope.submit = function(){
+    $scope.pdrScore = function(array){
+      
+      var contents = {};
 
-  		window.location.href = $scope.nextPage;
+      contents.intensity = 0;
+      contents.core = 0
 
-  	}
+      for( var i = 0; i<array.length; i++){
+        if (array[i] > 0 && array != undefined){
+          contents.core++
+          contents.intensity = contents.intensity + array[i]
+        }
 
-    $scope.issueHappened      = [];
-    $scope.issueDistressLevel = {};
-    $scope.issueResponse      = {};
-
-    $scope.issueHappenedToggle = function(issue){
-    
-      var idx = $scope.issueHappened.indexOf(issue);
-
-      // is currently selected
-      if (idx > -1) {
-        $scope.issueHappened.splice(idx, 1);
       }
 
-      // is newly selected
-      else {
-        $scope.issueHappened.push(issue);
-      }
-
+      return contents
     }
 
   	$scope.cravingsTrue = false;
 
-
     $scope.distressScore = 0;
-
 
   	$scope.cravings = function(yes_no){
 
@@ -57,8 +49,14 @@ angular.module('paveApp')
 
   	}
 
+    $scope.pdrSet = function(index,value){
+
+      $scope.pdrScoreArray[index] = value;
+
+    }
+
     $scope.submit = function(){
-      Encounters.setTaskCompleted($scope.userId,$scope.sessionIndex,$scope.taskIndex,$('form').serialize());
+      Encounters.setTaskCompleted($scope.userId,$scope.sessionIndex,$scope.taskIndex,$('form').serializeArray());
       $location.path("history/" + $scope.userId);
 
     }

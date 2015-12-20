@@ -20,7 +20,8 @@
                 <td> <a class="btn btn-{{completionToStatus(sessionData[$index+1] != undefined)}}" ng-href="#/sessions/review/{{userId}}/{{$index+1}}"><i class="glyphicon glyphicon-facetime-video"></i></a>
                 </td>
                 <td ng-repeat="task in encounterTasks">
-                    <a class="btn btn-{{completionToStatus(encounters[$parent.$index].tasks[$index].completed)}}" ng-href="{{task.questionnaire}}/{{userId}}/{{$parent.$index}}/{{$index}}" ng-show="task.questionnaire != undefined"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a class="btn btn-success" ng-click="showDataModal($parent.$index,task.name,task.label,$index)" ng-show="task.questionnaire != undefined && encounters[$parent.$index].tasks[$index].completed"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <a class="btn btn-warning" ng-href="{{task.questionnaire}}/{{userId}}/{{$parent.$index}}/{{$index}}" ng-show="task.questionnaire != undefined && !encounters[$parent.$index].tasks[$index].completed"><i class="glyphicon glyphicon-pencil"></i></a>
                     <a class="btn btn-{{completionToStatus(encounters[$parent.$index].tasks[$index].completed)}}" ng-click="showSessionModal($parent.$index,task.name,task.label,$index)" ng-show="task.questionnaire == undefined"><i class="glyphicon glyphicon-pencil"></i></a>
                 </td>
             </tr>
@@ -33,8 +34,8 @@
             <div class="modal-header">
                 <h4 class="modal-title">Mark <b>Session #{{selectedSessionIndex+1}} {{selectedTaskLabel}}</b> as completed on:</h4> </div>
             <div class="modal-body">
-                <label> Date occurred:
-                    <input type="date" ng-model="currentSessionDate" ng-disabled="currentSessionCompleted"> </label>
+                <label> Date occurred:  <span ng-show="currentSessionCompleted">{{currentSessionDate | date : 'short'}}</span>
+                    <input type="date" ng-model="currentSessionDate" ng-hide="currentSessionCompleted"> </label>
                 <br/>
                 <textarea ng-model="currentSessionNotes" placeholder="Add any notes here" style="width:100%;" ng-disabled="currentSessionCompleted"></textarea>
             </div>
@@ -53,7 +54,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Add a Supplemental Log</h4> </div>
-            <div class="modal-body"> On {{currentDateTime | date : 'short'}}
+            <div class="modal-body"> On {{currentSessionDate | date : 'short'}}
                 <br/>
                 <textarea ng-model='lognotes' placeholder="Add any notes here" style="width:100%;"></textarea>
                 <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Close</button>
@@ -67,6 +68,27 @@
                     <p>{{log.notes}}</p>
                 </div>
             </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<div class="modal" id="data-modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Data from: <b>Session #{{selectedSessionIndex+1}} {{selectedTaskLabel}}</b></h4> </div>
+            <div class="modal-body"> On {{currentSessionDate | date : 'short'}}
+                <table class="table table-striped">
+                <tr ng-repeat="item in reportData"><td>{{item.name}}</td><td><span class="{{cleanValue(item.value).class}}">{{cleanValue(item.value).value}}</span></td></tr>
+                </table>
+                
+            </div>
+                <div class="modal-footer">
+                 <button type="button" class="btn btn-danger pull-right" data-dismiss="modal">Close</button>
+
+                </div>
         </div>
         <!-- /.modal-content -->
     </div>

@@ -31,7 +31,7 @@ angular.module('paveApp')
 
   	$scope.submit = function(){
 
-      Encounters.setTaskCompleted($scope.userId,$scope.sessionIndex,$scope.taskIndex,$('form').serialize());
+      Encounters.setTaskCompleted($scope.userId,$scope.sessionIndex,$scope.taskIndex,$('form').serializeArray());
 
   		$location.path("history/" + $scope.userId);
 

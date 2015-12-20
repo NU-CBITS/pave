@@ -29,8 +29,10 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        // templateUrl: 'views/main.html',
+        // controller: 'MainCtrl'
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl'
       })
       .when('/record', {
         templateUrl: 'views/record.html',
